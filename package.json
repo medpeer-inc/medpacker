@@ -1,5 +1,12 @@
 {
   "name": "rails-webpack-template",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "dev": "webpack --progress",
+    "watch": "webpack --progress --watch"
+  },
+  "devDependencies": {
+    "webpack": "^4.25.1"
+  }
 }
