@@ -18,8 +18,6 @@ const entry = targets.reduce((entry, target) => {
   });
 }, {});
 
-console.log(entry);
-
 module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry: entry,
