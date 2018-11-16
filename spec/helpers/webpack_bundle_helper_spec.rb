@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe WebpackBundleHelper, type: :helper do
   before do
     manifest = {
-      "item_group_editor.css": '/packs/item_group_editor-5d7c7164b8a0a9d675fad9ab410eaa8d.css',
-      "item_group_editor.js": '/packs/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js',
-      "item_group_editor.js.map": '/packs/item_group_editor.js.map',
-      "union-ok.png": '/packs/union-ok-857e5bfa272e71b6384046f68ba29d44.png',
-      "union-ok@2x.png": '/packs/union-ok@2x-5d7c7164b8a0a9d675fad9ab410eaa8d.png'
+      "item_group_editor.css": '/bundles/item_group_editor-5d7c7164b8a0a9d675fad9ab410eaa8d.css',
+      "item_group_editor.js": '/bundles/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js',
+      "item_group_editor.js.map": '/bundles/item_group_editor.js.map',
+      "union-ok.png": '/bundles/union-ok-857e5bfa272e71b6384046f68ba29d44.png',
+      "union-ok@2x.png": '/bundles/union-ok@2x-5d7c7164b8a0a9d675fad9ab410eaa8d.png'
     }.stringify_keys
 
     allow_any_instance_of(WebpackBundleHelper).to receive(:manifest).and_return(manifest)
@@ -18,7 +18,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { asset_bundle_path('item_group_editor.js') }
 
       it 'returns actual file name' do
-        is_expected.to eq '/packs/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js'
+        is_expected.to eq '/bundles/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js'
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { asset_bundle_path('item_group_editor.css') }
 
       it 'returns actual file name' do
-        is_expected.to eq '/packs/item_group_editor-5d7c7164b8a0a9d675fad9ab410eaa8d.css'
+        is_expected.to eq '/bundles/item_group_editor-5d7c7164b8a0a9d675fad9ab410eaa8d.css'
       end
     end
 
@@ -46,7 +46,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { javascript_bundle_tag('item_group_editor') }
 
       it 'renders a nice <script> tag' do
-        is_expected.to eq '<script src="/packs/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js" defer="defer"></script>'
+        is_expected.to eq '<script src="/bundles/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js" defer="defer"></script>'
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { javascript_bundle_tag('item_group_editor', async: true) }
 
       it 'renders a nice <script> tag' do
-        is_expected.to eq '<script src="/packs/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js" async="async"></script>'
+        is_expected.to eq '<script src="/bundles/item_group_editor-857e5bfa272e71b6384046f68ba29d44.js" async="async"></script>'
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { stylesheet_bundle_tag('item_group_editor') }
 
       it 'renders a nice <link> tag' do
-        is_expected.to eq '<link rel="stylesheet" media="screen" href="/packs/item_group_editor-5d7c7164b8a0a9d675fad9ab410eaa8d.css" />'
+        is_expected.to eq '<link rel="stylesheet" media="screen" href="/bundles/item_group_editor-5d7c7164b8a0a9d675fad9ab410eaa8d.css" />'
       end
     end
 
@@ -94,7 +94,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { image_bundle_tag('union-ok.png') }
 
       it 'renders a nice <img> tag' do
-        is_expected.to eq '<img src="/packs/union-ok-857e5bfa272e71b6384046f68ba29d44.png" />'
+        is_expected.to eq '<img src="/bundles/union-ok-857e5bfa272e71b6384046f68ba29d44.png" />'
       end
     end
 

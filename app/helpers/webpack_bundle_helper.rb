@@ -41,7 +41,7 @@ module WebpackBundleHelper
 
   private
 
-  MANIFEST_PATH = 'public/packs/manifest.json'.freeze
+  MANIFEST_PATH = 'public/bundles/manifest.json'.freeze
 
   def manifest
     @manifest ||= JSON.parse(File.read(MANIFEST_PATH))
