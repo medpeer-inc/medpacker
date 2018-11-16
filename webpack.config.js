@@ -1,6 +1,12 @@
 const glob = require("glob");
 const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
+// extract css from bundled javascript
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// minify css when production
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// minify js when using optimize-css-assets-webpack-plugin
+const TerserPlugin = require("terser-webpack-plugin");
 
 const packs = path.join(__dirname, "app", "javascript", "packs");
 
@@ -22,8 +28,8 @@ module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry: entry,
   output: {
-    filename: "[name]-[hash].js",
-    chunkFilename: "[name].bundle-[hash].js",
+    filename: "js/[name]-[hash].js",
+    chunkFilename: "js/[name].bundle-[hash].js",
     path: path.resolve(__dirname, "public", "packs"),
     publicPath: "/packs/"
   },
@@ -32,9 +38,21 @@ module.exports = {
       fileName: "manifest.json",
       publicPath: "/packs/",
       writeToFileEmit: true
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style/[name]-[hash].css",
+      chunkFilename: "style/[name].bundle-[hash].css"
     })
   ],
   module: {
-    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }]
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      }
+    ]
+  },
+  optimization: {
+    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
   }
 };
