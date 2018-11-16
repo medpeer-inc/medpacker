@@ -1,7 +1,15 @@
-body {
-  background-color: red;
+.test {
+  color: white;
+}
 
-  .test {
-    color: white;
-  }
+.img1 {
+  width: 500px;
+  height: 500px;
+  background-image: url("../../image/1MB.jpg");
+}
+
+.img2 {
+  width: 500px;
+  height: 500px;
+  background-image: url("../../image/4KB.png");
 }
