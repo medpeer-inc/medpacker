@@ -49,6 +49,20 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      },
+      {
+        // 対象となるファイルの拡張子
+        test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/,
+        // 画像をBase64として取り込む
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 100 * 1024, // 100KB以上だったら埋め込まずファイルとして分離する
+              name: "img/[name]-[hash].[ext]"
+            }
+          }
+        ]
       }
     ]
   },
