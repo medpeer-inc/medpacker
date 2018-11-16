@@ -8,18 +8,18 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // minify js when using optimize-css-assets-webpack-plugin
 const TerserPlugin = require("terser-webpack-plugin");
 
-const packs = path.join(__dirname, "app", "bundle", "javascript", "packs");
+const bundles = path.join(__dirname, "app", "bundle", "javascript", "entries");
 
-const targets = glob.sync(path.join(packs, "**/*.{js,jsx,ts,tsx}"));
+const targets = glob.sync(path.join(bundles, "**/*.{js,jsx,ts,tsx}"));
 const entry = targets.reduce((entry, target) => {
   const bundle = path.relative(__dirname, target);
-  const filename = path.relative(packs, target);
+  const filename = path.relative(bundles, target);
 
   const ext = path.extname(filename);
 
   return Object.assign({}, entry, {
     // Input: "application.js"
-    // Output: { "application": "./app/bundle/javascript/packs/application.js" }
+    // Output: { "application": "./app/bundle/javascript/bundles/application.js" }
     [filename.replace(ext, "")]: "./" + bundle // TODO: Refactor
   });
 }, {});
