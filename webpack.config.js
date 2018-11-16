@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // minify js when using optimize-css-assets-webpack-plugin
 const TerserPlugin = require("terser-webpack-plugin");
 
-const packs = path.join(__dirname, "app", "javascript", "packs");
+const packs = path.join(__dirname, "app", "bundle", "javascript", "packs");
 
 const targets = glob.sync(path.join(packs, "**/*.{js,jsx,ts,tsx}"));
 const entry = targets.reduce((entry, target) => {
@@ -19,7 +19,7 @@ const entry = targets.reduce((entry, target) => {
 
   return Object.assign({}, entry, {
     // Input: "application.js"
-    // Output: { "application": "./app/javascript/packs/application.js" }
+    // Output: { "application": "./app/bundle/javascript/packs/application.js" }
     [filename.replace(ext, "")]: "./" + bundle // TODO: Refactor
   });
 }, {});
@@ -30,13 +30,13 @@ module.exports = {
   output: {
     filename: "js/[name]-[hash].js",
     chunkFilename: "js/[name].bundle-[hash].js",
-    path: path.resolve(__dirname, "public", "packs"),
-    publicPath: "/packs/"
+    path: path.resolve(__dirname, "public", "bundles"),
+    publicPath: "/bundles/"
   },
   plugins: [
     new ManifestPlugin({
       fileName: "manifest.json",
-      publicPath: "/packs/",
+      publicPath: "/bundles/",
       writeToFileEmit: true
     }),
     new MiniCssExtractPlugin({
