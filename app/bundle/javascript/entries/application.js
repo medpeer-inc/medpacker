@@ -1,2 +1,2 @@
-import "../../stylesheet/entries/application.css";
+import "../../stylesheet/entries/application.scss";
 console.log("application.js");
