@@ -6,8 +6,10 @@
     "dev": "webpack --mode=development --progress",
     "watch": "webpack --mode=development --progress --watch",
     "build:production": "webpack --mode=production",
-    "lint": "eslint app/bundle/javascript",
-    "lint:fix": "eslint app/bundle/javascript --fix"
+    "eslint": "eslint app/bundle/javascript --ext js",
+    "eslint:fix": "eslint app/bundle/javascript --ext js --fix",
+    "stylelint": "stylelint app/bundle/stylesheet/**/*.scss",
+    "stylelint:fix": "stylelint app/bundle/stylesheet/**/*.scss --fix"
   },
   "devDependencies": {
     "css-loader": "^1.0.1",
@@ -16,6 +18,9 @@
     "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "sass-loader": "^7.1.0",
+    "stylelint": "^9.8.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.4.0",
     "terser-webpack-plugin": "^1.1.0",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
