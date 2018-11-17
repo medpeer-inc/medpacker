@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "webpack --mode=development --progress",
     "watch": "webpack --mode=development --progress --watch",
-    "build:production": "webpack --mode=production"
+    "build:production": "webpack --mode=production",
+    "lint": "eslint app/bundle/javascript",
+    "lint:fix": "eslint app/bundle/javascript --fix"
   },
   "devDependencies": {
     "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",

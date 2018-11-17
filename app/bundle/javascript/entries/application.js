@@ -1,2 +1,1 @@
-import "../../stylesheet/entries/application.scss";
-console.log("application.js");
+import '../../stylesheet/entries/application.scss';

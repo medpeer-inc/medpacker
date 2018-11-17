@@ -1,1 +1,1 @@
-document.querySelector("#app").innerHTML = '<span class="test">test</span>';
+document.querySelector('#app').innerHTML = '<span class="test">test</span>';
