@@ -1,2 +1,2 @@
-import '../../stylesheet/entries/application.scss';
+import "../../stylesheet/entries/application.scss";
 import "../../image/test.jpg";
