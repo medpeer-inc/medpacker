@@ -4,12 +4,13 @@
     <title>RailsWebpackTemplate</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_bundle_tag 'application' %>
+    <%= yield :bundle_css %>
   </head>
 
   <body>
     <%= yield %>
+    <%= javascript_bundle_tag 'application' %>
+    <%= yield :bundle_js %>
   </body>
 </html>
