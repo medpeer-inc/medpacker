@@ -30,8 +30,11 @@ const entry = targets.reduce((entry, target) => {
   });
 }, {});
 
+const mode = process.env.NODE_ENV || "development";
+
 module.exports = {
-  mode: process.env.NODE_ENV || "development",
+  mode: mode,
+  devtool: mode === "development" ? "source-map" : "none",
   entry: entry,
   output: {
     filename: "js/[name]-[hash].js",
@@ -54,7 +57,24 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: mode === "development",
+              minimize: true,
+              // css-loaderの前に噛ませるloaderの数
+              importLoaders: 1
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: mode === "development"
+            }
+          }
+        ]
       },
       {
         // 対象となるファイルの拡張子
