@@ -12,12 +12,14 @@
     "stylelint:fix": "stylelint app/bundle/stylesheet/**/*.scss --fix"
   },
   "devDependencies": {
+    "autoprefixer": "^9.3.1",
     "css-loader": "^1.0.1",
     "eslint": "^5.9.0",
     "file-loader": "^2.0.0",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "stylelint": "^9.8.0",
     "stylelint-config-recommended-scss": "^3.2.0",

@@ -422,7 +422,7 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-autoprefixer@^9.0.0:
+autoprefixer@^9.0.0, autoprefixer@^9.3.1:
   version "9.3.1"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.3.1.tgz#71b622174de2b783d5fd99f9ad617b7a3c78443e"
   dependencies:
@@ -1000,6 +1000,15 @@ copy-descriptor@^0.1.0:
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+cosmiconfig@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-4.0.0.tgz#760391549580bbd2df1e562bc177b13c290972dc"
+  dependencies:
+    is-directory "^0.3.1"
+    js-yaml "^3.9.0"
+    parse-json "^4.0.0"
+    require-from-string "^2.0.1"
 
 cosmiconfig@^5.0.0:
   version "5.0.7"
@@ -2172,11 +2181,23 @@ ignore@^5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.4.tgz#33168af4a21e99b00c5d41cbadb6a6cb49903a45"
 
+import-cwd@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
+  dependencies:
+    import-from "^2.1.0"
+
 import-fresh@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-2.0.0.tgz#d81355c15612d386c61f9ddd3922d4304822a546"
   dependencies:
     caller-path "^2.0.0"
+    resolve-from "^3.0.0"
+
+import-from@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/import-from/-/import-from-2.1.0.tgz#335db7f2a7affd53aaa471d4b8021dee36b7f3b1"
+  dependencies:
     resolve-from "^3.0.0"
 
 import-lazy@^3.1.0:
@@ -3623,6 +3644,22 @@ postcss-less@^3.0.1:
   dependencies:
     postcss "^7.0.3"
 
+postcss-load-config@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-2.0.0.tgz#f1312ddbf5912cd747177083c5ef7a19d62ee484"
+  dependencies:
+    cosmiconfig "^4.0.0"
+    import-cwd "^2.0.0"
+
+postcss-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-3.0.0.tgz#6b97943e47c72d845fa9e03f273773d4e8dd6c2d"
+  dependencies:
+    loader-utils "^1.1.0"
+    postcss "^7.0.0"
+    postcss-load-config "^2.0.0"
+    schema-utils "^1.0.0"
+
 postcss-markdown@^0.34.0:
   version "0.34.0"
   resolved "https://registry.yarnpkg.com/postcss-markdown/-/postcss-markdown-0.34.0.tgz#7a043e6eee3ab846a4cefe3ab43d141038e2da79"
@@ -4237,6 +4274,10 @@ request@^2.87.0, request@^2.88.0:
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
+
+require-from-string@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
 
 require-main-filename@^1.0.1:
   version "1.0.1"

@@ -65,7 +65,14 @@ module.exports = {
               sourceMap: mode === "development",
               minimize: true,
               // css-loaderの前に噛ませるloaderの数
-              importLoaders: 1
+              importLoaders: 2
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: mode === "development",
+              plugins: [require("autoprefixer")({ grid: true })]
             }
           },
           {
