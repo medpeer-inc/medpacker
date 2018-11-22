@@ -8,7 +8,13 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // minify js when using optimize-css-assets-webpack-plugin
 const TerserPlugin = require("terser-webpack-plugin");
 
-const bundles = path.join(__dirname, "app", "bundle", "javascript", "entries");
+const bundles = path.join(
+  __dirname,
+  "app",
+  "bundles",
+  "javascripts",
+  "entries"
+);
 
 const targets = glob.sync(path.join(bundles, "**/*.{js,jsx,ts,tsx}"));
 const entry = targets.reduce((entry, target) => {
@@ -19,8 +25,8 @@ const entry = targets.reduce((entry, target) => {
 
   return Object.assign({}, entry, {
     // Input: "application.js"
-    // Output: { "application": "./app/bundle/javascript/bundles/application.js" }
-    [filename.replace(ext, "")]: "./" + bundle // TODO: Refactor
+    // Output: { "application": "./app/bundles/javascripts/application.js" }
+    [filename.replace(ext, "")]: "./" + bundle
   });
 }, {});
 
@@ -71,9 +77,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@js": path.resolve(__dirname, "app/bundle/javascript"),
-      "@css": path.resolve(__dirname, "app/bundle/stylesheet"),
-      "@image": path.resolve(__dirname, "app/bundle/image")
+      "@js": path.resolve(__dirname, "app/bundles/javascripts"),
+      "@css": path.resolve(__dirname, "app/bundles/stylesheets"),
+      "@image": path.resolve(__dirname, "app/bundles/images")
     }
   }
 };
