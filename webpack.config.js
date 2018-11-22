@@ -70,7 +70,10 @@ module.exports = {
           {
             loader: "postcss-loader",
             options: {
-              plugins: [require("autoprefixer")({ grid: true })]
+              plugins: [
+                require("autoprefixer")({ grid: true }),
+                require("postcss-flexbugs-fixes")
+              ]
             }
           },
           {
