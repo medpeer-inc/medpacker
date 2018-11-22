@@ -68,5 +68,12 @@ module.exports = {
   },
   optimization: {
     minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
+  },
+  resolve: {
+    alias: {
+      "@js": path.resolve(__dirname, "app/bundle/javascript"),
+      "@css": path.resolve(__dirname, "app/bundle/stylesheet"),
+      "@image": path.resolve(__dirname, "app/bundle/image")
+    }
   }
 };
