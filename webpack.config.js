@@ -56,6 +56,31 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    modules: false,
+                    targets: {
+                      browsers: "> 0.25%"
+                    },
+                    forceAllTransforms: true,
+                    useBuiltIns: "usage"
+                  }
+                ]
+              ],
+              plugins: []
+            }
+          }
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
