@@ -68,7 +68,7 @@ module.exports = {
                   {
                     modules: false,
                     targets: {
-                      browsers: "> 1%"
+                      browsers: "> 0.25%"
                     },
                     forceAllTransforms: true,
                     useBuiltIns: "usage"
