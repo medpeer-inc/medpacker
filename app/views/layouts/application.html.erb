@@ -5,12 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_bundle_tag 'application' %>
+    <%= javascript_bundle_tag 'application', async: true %>
     <%= yield :bundle_css %>
   </head>
 
   <body>
     <%= yield %>
-    <%= javascript_bundle_tag 'application' %>
     <%= yield :bundle_js %>
   </body>
 </html>
