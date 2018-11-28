@@ -4,6 +4,7 @@
   "dependencies": {},
   "scripts": {
     "dev": "webpack --mode=development --progress",
+    "dev:server": "webpack-dev-server --progress --color --hot",
     "watch": "webpack --mode=development --progress --watch",
     "build:production": "webpack --mode=production",
     "eslint": "eslint app/bundle/javascript --ext js",
