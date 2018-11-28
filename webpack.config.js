@@ -124,7 +124,17 @@ module.exports = {
     ]
   },
   optimization: {
-    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
+    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: "vendor",
+          chunks: "initial",
+          enforce: true
+        }
+      }
+    }
   },
   resolve: {
     alias: {

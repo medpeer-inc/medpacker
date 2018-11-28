@@ -11,6 +11,7 @@
 
   <body>
     <%= yield %>
+    <%= javascript_bundle_tag 'vendor' %>
     <%= yield :bundle_js %>
   </body>
 </html>
