@@ -132,5 +132,15 @@ module.exports = {
       "@css": path.resolve(__dirname, "app/bundles/stylesheets"),
       "@image": path.resolve(__dirname, "app/bundles/images")
     }
+  },
+  devServer: {
+    publicPath: "/bundles/",
+    contentBase: path.resolve(__dirname, "public", "bundles"),
+    host: "0.0.0.0",
+    port: 3035,
+    disableHostCheck: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
   }
 };
