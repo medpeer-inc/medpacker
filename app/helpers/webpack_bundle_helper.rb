@@ -9,6 +9,9 @@ module WebpackBundleHelper
   end
 
   def javascript_bundle_tag(entry, **options)
+    # skip when not generate split chunk
+    return if entry == 'vendor' && !manifest.key?("#{entry}.js")
+  
     path = asset_bundle_path("#{entry}.js")
 
     options = {

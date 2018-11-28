@@ -3,10 +3,6 @@ const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// minify css when production
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-// minify js when using optimize-css-assets-webpack-plugin
-const TerserPlugin = require("terser-webpack-plugin");
 
 const bundles = path.join(
   __dirname,
@@ -30,11 +26,7 @@ const entry = targets.reduce((entry, target) => {
   });
 }, {});
 
-const mode = process.env.NODE_ENV || "development";
-
 module.exports = {
-  mode: mode,
-  devtool: mode === "development" ? "source-map" : "none",
   entry: entry,
   output: {
     filename: "js/[name]-[hash].js",
@@ -124,7 +116,6 @@ module.exports = {
     ]
   },
   optimization: {
-    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -147,15 +138,5 @@ module.exports = {
     hints: "warning", // default value
     maxEntrypointSize: 250000, // default value
     maxAssetSize: 250000 // default value
-  },
-  devServer: {
-    publicPath: "/bundles/",
-    contentBase: path.resolve(__dirname, "public", "bundles"),
-    host: "0.0.0.0",
-    port: 3035,
-    disableHostCheck: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*"
-    }
   }
 };
