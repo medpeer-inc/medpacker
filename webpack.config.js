@@ -133,6 +133,11 @@ module.exports = {
       "@image": path.resolve(__dirname, "app/bundles/images")
     }
   },
+  performance: {
+    hints: "warning", // default value
+    maxEntrypointSize: 250000, // default value
+    maxAssetSize: 250000 // default value
+  },
   devServer: {
     publicPath: "/bundles/",
     contentBase: path.resolve(__dirname, "public", "bundles"),
