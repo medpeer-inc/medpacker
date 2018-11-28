@@ -42,10 +42,6 @@ module WebpackBundleHelper
 
   MANIFEST_PATH = 'public/bundles/manifest.json'.freeze
 
-  # def manifest
-  #   @manifest ||= JSON.parse(File.read(MANIFEST_PATH))
-  # end
-
   def manifest
     return @manifest ||= JSON.parse(dev_manifest) if Rails.env.development?
     return @manifest ||= JSON.parse(test_manifest) if Rails.env.test?
