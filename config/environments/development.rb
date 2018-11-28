@@ -1,3 +1,5 @@
+require_relative '../dev_server_proxy.rb'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -58,4 +60,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  # for webpack-dev-server
+  config.dev_server_host = '0.0.0.0:3035'
+  config.middleware.use DevServerProxy, ssl_verify_none: true
 end
