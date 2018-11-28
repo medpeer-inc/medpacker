@@ -67,6 +67,31 @@ RSpec.describe WebpackBundleHelper, type: :helper do
         is_expected.to raise_error WebpackBundleHelper::BundleNotFound
       end
     end
+
+    context 'given vendor entry name' do
+      subject { javascript_bundle_tag('vendor') }
+
+      context 'not exists vendor manifest' do
+        it 'blank' do
+          is_expected.to be nil
+        end
+      end
+
+      context 'exists vendor manifest' do
+        before do
+          manifest = {
+            "vendor.js": "/bundles/vendor-a89f33a3135848e97d7f.js",
+            "vendor.js.map": "/bundles/vendor-a89f33a3135848e97d7f.js.map",
+          }.stringify_keys
+      
+          allow_any_instance_of(WebpackBundleHelper).to receive(:manifest).and_return(manifest)
+        end
+
+        it 'renders a nice <script> tag' do
+          is_expected.to eq '<script src="/bundles/vendor-a89f33a3135848e97d7f.js" defer="defer"></script>'
+        end
+      end
+    end
   end
 
   describe '#stylesheet_bundle_tag' do
