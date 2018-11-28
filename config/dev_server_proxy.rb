@@ -1,6 +1,6 @@
 require 'rack/proxy'
 
-# webpack-dev-serverからのアセット取得をプロキシする -> localhost以外からもdev環境を見れるようにするため
+# proxy getting asset from webpack-dev-server for other hosts except for localhost
 class DevServerProxy < Rack::Proxy
 
   def perform_request(env)

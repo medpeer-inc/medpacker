@@ -100,14 +100,12 @@ module.exports = {
         ]
       },
       {
-        // 対象となるファイルの拡張子
         test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/,
-        // 画像をBase64として取り込む
         use: [
           {
             loader: "url-loader",
             options: {
-              limit: 100 * 1024, // 100KB以上だったら埋め込まずファイルとして分離する
+              limit: 100 * 1024,
               name: "img/[name]-[hash].[ext]"
             }
           }

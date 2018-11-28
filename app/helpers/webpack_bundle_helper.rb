@@ -56,9 +56,8 @@ module WebpackBundleHelper
   end
 
   def dev_manifest
-    # webpack-dev-serverから直接取得する
     OpenURI.open_uri("#{dev_server_host}/bundles/manifest.json").read
-  # dev-server動いてないときでも動くようにする
+  # read manifest when dev server not running
   rescue Errno::ECONNREFUSED
     File.read(MANIFEST_PATH)
   end
