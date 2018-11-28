@@ -119,6 +119,7 @@ module.exports = {
         vendor: {
           test: /node_modules/,
           name: "vendor",
+          filename: "js/vendor-[hash].js",
           chunks: "initial",
           enforce: true
         }
