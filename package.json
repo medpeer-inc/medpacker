@@ -6,8 +6,8 @@
     "dev:server": "webpack-dev-server --progress --color --hot --config webpack.dev.js",
     "dev:watch": "webpack --mode=development --progress --watch --config webpack.dev.js",
     "build": "webpack --mode=production --config webpack.prod.js",
-    "eslint": "eslint app/bundles/javascripts --ext js",
-    "eslint:fix": "eslint app/bundles/javascripts --ext js --fix",
+    "eslint": "eslint app/bundles/javascripts --ext js,vue",
+    "eslint:fix": "eslint app/bundles/javascripts --ext js,vue --fix",
     "stylelint": "stylelint app/bundles/stylesheets/**/*.scss",
     "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss --fix"
   },
@@ -23,6 +23,7 @@
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
     "eslint": "^5.9.0",
+    "eslint-plugin-vue": "^4.7.1",
     "file-loader": "^2.0.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",
