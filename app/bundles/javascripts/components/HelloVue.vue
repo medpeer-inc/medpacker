@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  data () {
-    return {
-      message: 'Hello Vue!!'
-    }
-  }
-}
+	data () {
+		return {
+			message: 'Hello Vue!!'
+		};
+	}
+};
 </script>
 
 <style lang="scss" scoped>
