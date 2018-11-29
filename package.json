@@ -6,10 +6,10 @@
     "dev:server": "webpack-dev-server --progress --color --hot --config webpack.dev.js",
     "dev:watch": "webpack --mode=development --progress --watch --config webpack.dev.js",
     "build": "webpack --mode=production --config webpack.prod.js",
-    "eslint": "eslint app/bundle/javascript --ext js",
-    "eslint:fix": "eslint app/bundle/javascript --ext js --fix",
-    "stylelint": "stylelint app/bundle/stylesheet/**/*.scss",
-    "stylelint:fix": "stylelint app/bundle/stylesheet/**/*.scss --fix"
+    "eslint": "eslint app/bundles/javascripts --ext js",
+    "eslint:fix": "eslint app/bundles/javascripts --ext js --fix",
+    "stylelint": "stylelint app/bundles/stylesheets/**/*.scss",
+    "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss --fix"
   },
   "dependencies": {
     "axios": "^0.18.0",
