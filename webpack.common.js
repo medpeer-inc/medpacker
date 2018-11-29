@@ -129,7 +129,7 @@ module.exports = {
   resolve: {
     alias: {
       "@js": path.resolve(__dirname, "app/bundles/javascripts"),
-      "@styles": path.resolve(__dirname, "app/bundles/stylesheets"),
+      "@style": path.resolve(__dirname, "app/bundles/stylesheets"),
       "@image": path.resolve(__dirname, "app/bundles/images")
     }
   },
