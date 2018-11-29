@@ -11,7 +11,10 @@
     "stylelint": "stylelint app/bundle/stylesheet/**/*.scss",
     "stylelint:fix": "stylelint app/bundle/stylesheet/**/*.scss --fix"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue": "^2.5.17"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/polyfill": "^7.0.0",
@@ -32,6 +35,8 @@
     "stylelint-scss": "^3.4.0",
     "terser-webpack-plugin": "^1.1.0",
     "url-loader": "^1.1.2",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",

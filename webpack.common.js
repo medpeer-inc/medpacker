@@ -3,6 +3,7 @@ const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { VueLoaderPlugin } = require('vue-loader')
 
 const bundles = path.join(
   __dirname,
@@ -43,10 +44,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "style/[name]-[hash].css",
       chunkFilename: "style/[name].bundle-[hash].css"
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -129,8 +135,9 @@ module.exports = {
   resolve: {
     alias: {
       "@js": path.resolve(__dirname, "app/bundles/javascripts"),
-      "@styles": path.resolve(__dirname, "app/bundles/stylesheets"),
-      "@image": path.resolve(__dirname, "app/bundles/images")
+      "@style": path.resolve(__dirname, "app/bundles/stylesheets"),
+      "@image": path.resolve(__dirname, "app/bundles/images"),
+      "vue$": "vue/dist/vue.esm.js"
     }
   },
   performance: {
