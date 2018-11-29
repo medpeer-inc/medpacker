@@ -1,1 +1,1 @@
-import "@styles/entries/application.scss";
+import '@styles/entries/application.scss';

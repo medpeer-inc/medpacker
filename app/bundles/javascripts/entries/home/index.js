@@ -1,1 +1,1 @@
-import "@styles/entries/home/home.scss";
+import '@styles/entries/home/home.scss';
