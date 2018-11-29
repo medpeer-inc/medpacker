@@ -1,3 +1,8 @@
+// write common css
+@import "~@styles/variables.scss";
+
 body {
-  background-color: red;
+  background-color: $body-bg;
+  display: flex;
+  justify-content: center;
 }

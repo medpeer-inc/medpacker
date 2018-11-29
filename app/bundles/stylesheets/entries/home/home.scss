@@ -1,15 +1,20 @@
-.test {
-  color: white;
-}
+.container {
+  .box-images {
+    display: flex;
+    flex-direction: column;
 
-.img1 {
-  width: 500px;
-  height: 500px;
-  background-image: url("../../../images/1MB.jpg");
-}
-
-.img2 {
-  width: 500px;
-  height: 500px;
-  background-image: url("../../../images/4KB.png");
+    .img-rails {
+      width: 400px;
+      height: 200px;
+      background-image: url("~@image/rails-logo.svg");
+      background-repeat: no-repeat;
+    }
+    
+    .img-webpack {
+      width: 400px;
+      height: 200px;
+      background-image: url("~@image/webpack-logo.svg");
+      background-repeat: no-repeat;
+    }
+  }
 }
