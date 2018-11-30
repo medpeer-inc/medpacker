@@ -119,8 +119,8 @@ developtmentモードと違い、ビルドされたアセットが圧縮され�
 jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
 すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
 
-このレポジトリの設定では、以下のように設定しています。
-TODO: target browser書く
+このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
+https://github.com/medpeer-inc/rails-webpack-template/blob/master/webpack.common.js#L30
 
 もし自分で設定したいよという場合は以下2つのサイトを参考に設定してみてください。
 - https://github.com/browserslist/browserslist
