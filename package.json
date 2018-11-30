@@ -8,8 +8,8 @@
     "build": "webpack --mode=production --config webpack.prod.js",
     "eslint": "eslint app/bundles/javascripts --ext js,vue",
     "eslint:fix": "eslint app/bundles/javascripts --ext js,vue --fix",
-    "stylelint": "stylelint app/bundles/stylesheets/**/*.scss",
-    "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss --fix"
+    "stylelint": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue",
+    "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue --fix"
   },
   "dependencies": {
     "axios": "^0.18.0",
