@@ -1,5 +1,5 @@
 # これは何か?
-Railsとwebpackを統合したテンプレートです(not webpacker)。
+Railsとwebpackを統合したテンプレートです(not webpacker)。
 メドピアのフロントエンド開発で最低限必要になる(と思われる)ものを入れてあります。
 各部署・プロジェクトで新しくrails newする時は、このレポジトリのフロントエンド部分を移植して構築してください。
 
@@ -80,7 +80,7 @@ import '@style/entries/entries/home/index.scss'
 ```
 jsと同様に、必ず`content_for :bundel_js`を使用してください。
 これによるアセットの設定先はheadタグになります。
-もしこれを用いない場合、FOUC(Flash of Unstyled Content)という現象が起こる可能性があります。
+もしこれを用いない場合、FOUC(Flash of Unstyled Content)という現象が起こる可能性があります。
 繰り返しますが、必ず<b>jsのエントリーポイントにてscssのファイルをimportしてください。</b>
 そうしないとwebpackがscssをビルドしてくれず、cssが`stylesheet_bundle_tag`の実行時にエラーが起きます。
 
@@ -88,7 +88,7 @@ jsと同様に、必ず`content_for :bundel_js`を使用してください。
 このレポジトリに導入されている主要なライブラリや機能を紹介します。
 
 ## webpack/webpack-dev-server
-このレポジトリのキモです。フロントエンドのアセットをビルドするために使っています。
+このレポジトリのキモです。フロントエンドのアセットをビルドするために使っています。
 
 ### webpack
 js, css, 画像ファイルをビルドします。ビルドしたファイルは`public/bundles`以下に出力します。
@@ -134,7 +134,7 @@ https://github.com/medpeer-inc/rails-webpack-template/blob/master/config/environ
 ```
 
 ## babel系
-jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
+jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
 すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
 
 このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
