@@ -115,6 +115,24 @@ $ yarn run build
 本モードの特徴は、出力されるファイルの大きさを極力小さくするということです。
 developtmentモードと違い、ビルドされたアセットが圧縮される・ソースマップが出力されないなど、デバッグはやりにくいですが、ファイルが小さいためより高速にクライアントがアセット取得できます。
 
+#### webpack-dev-server
+また、通常のwebpackの他にwebpack-dev-serverを導入しています。
+これはwebpackの開発をサポートするツールです。
+例えば...
+- JSを変更した時差分のビルドをしてくれる(webpackのwatchと同じ)
+- リロードせずに更新したファイルがブラウザに適用される(Hot module replacement, HMR)
+- 上記のHMRができない場合は自動的にブラウザをリロードし、更新分のアセットを取得する
+
+という機能が使えます。是非使ってみてください。
+
+ただwebpack-dev-serverですがdocker上で動かす場合、dockerの設定とwebpack-dev-serverの設定(hostやportあたり)を調整する必要がある場合があります。
+webpack-dev-server側は以下のファイルを修正する必要があるかもしれません。
+```
+https://github.com/medpeer-inc/rails-webpack-template/blob/master/webpack.dev.js#L8
+https://github.com/medpeer-inc/rails-webpack-template/blob/master/config/dev_server_proxy.rb
+https://github.com/medpeer-inc/rails-webpack-template/blob/master/config/environments/development.rb#L64
+```
+
 ## babel系
 jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
 すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
@@ -134,13 +152,53 @@ jsとcssのlintを設定しています。
 `yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
 
 ### stylelint
-`app/bundles/stylesheets`配下のscssをlint対象にしています。
+`app/bundles/stylesheets`及び`app/bundles/javascripts/components`配下のscss(Vue.jsの単一ファイルコンポーネント内部のscssを含む)をlint対象にしています。
 `yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
 
 ## postcss
-## terser
+postcssとはcssに対して何かしらの処理を付与するためのツールです。
+現状では以下2つのpostcssのツール(プラグイン)を入れています。
+デザイナーとマークアップエンジニアが幸せになる系のプラグインを入れてあります。
 
-# (番外編)なぜwebpackerではダメ
-# (番外編)なぜassets pipelineではダメ
+### autoprefixer
+自動的にベンダープレフィックスを付与してくれる。
 
-# 参考
+### postcss-flexbugs-fixes
+IE11のflexboxのバグを考慮したcssを出力してくれるツール。
+なので、cssでflexboxを書く時はIE11のバグを気にせず書いても大丈夫です。
+
+## Vue.js
+デフォルトで入れておきました。
+Vue.js以外を入れたい場合(jQuery, React, Angular等)はお近くのフロントエンドエンジニアまで相談してください。
+そもそも「フレームワークいらねーよ」という方はVue.js周りの設定を剥ぎ取った上で、npmからvueを削除してください(やり方がわからなかったらお近くのフロントエンドエンジニアまで)。
+
+## axios
+ajaxしたい時はaxiosを使ってください。くれぐれも`$.ajax`を使いたいという理由だけでjQueryを入れるのはやめましょう。
+
+# Q&A
+## jQueryは入れないの?
+最近のjsはjQueryがなくても便利にDOM操作できるようになってきているので入れていないです。
+どうしても入れたい場合はお近くのフロントエンドエンジニアまで相談してください。
+
+## assets pipeline使わないの?
+assets pipelineの特性上、全てのjs, cssをそれぞれ1ファイルにまとめます。
+プロジェクトが大きくなると一つにまとめたjs, cssのサイズが膨大になりキャッシュが効いていない状態ではダウンロードに時間がかかってしまいます。
+またjs, cssのビルドもgemと密結合するので、小回りの効いた設定がやりづらいといった問題もあります。
+
+そのためassets pipelineは外してあります。
+
+## webpackerはどうよ?
+これに夢をみていた時代もありました。
+しかし、いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました。
+webpackが昔のバージョンのままだと、他のnpmパッケージのバージョンアップにかなり制限がかかるのでもうwebpacker捨てちまおうという判断です。
+
+# 注意点
+- npmコマンドでパッケージを追加しないでください。yarnでやってください。
+
+# 参考資料
+以下記事を参考にwebpack, webpack-dev-serverとrailsのつなぎこみ部分を実装させていただきました。
+記事ありがとうございました！
+
+https://inside.pixiv.blog/subal/4615
+https://medium.com/studist-dev/goodbye-webpacker-183155a942f6
+
