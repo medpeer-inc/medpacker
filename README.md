@@ -138,7 +138,7 @@ https://github.com/medpeer-inc/rails-webpack-template/blob/master/config/environ
 jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
 すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
 
-このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
+このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
 https://github.com/medpeer-inc/rails-webpack-template/blob/master/webpack.common.js#L30
 
 もし自分で設定したいよという場合は以下2つのサイトを参考に設定してみてください。
@@ -171,7 +171,7 @@ IE11のflexboxのバグを考慮したcssを出力してくれるツール。
 ## Vue.js
 デフォルトで入れておきました。
 Vue.js以外を入れたい場合(jQuery, React, Angular等)はお近くのフロントエンドエンジニアまで相談してください。
-そもそも「フレームワークいらねーよ」という方はVue.js周りの設定を剥ぎ取った上で、npmからvueを削除してください(やり方がわからなかったらお近くのフロントエンドエンジニアまで)。
+そもそも「フレームワークいらねーよ」という方はVue.js周りの設定を剥ぎ取った上で、npmからvueを削除してください(やり方がわからなかったらお近くのフロントエンドエンジニアまで)。
 
 ## axios
 ajaxしたい時はaxiosを使ってください。くれぐれも`$.ajax`を使いたいという理由だけでjQueryを入れるのはやめましょう。
@@ -200,6 +200,6 @@ webpackが昔のバージョンのままだと、他のnpmパッケージのバ�
 以下記事を参考にwebpack, webpack-dev-serverとrailsのつなぎこみ部分を実装させていただきました。
 記事ありがとうございました！
 
-https://inside.pixiv.blog/subal/4615
-https://medium.com/studist-dev/goodbye-webpacker-183155a942f6
+- https://inside.pixiv.blog/subal/4615
+- https://medium.com/studist-dev/goodbye-webpacker-183155a942f6
 
