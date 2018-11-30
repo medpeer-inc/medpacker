@@ -27,6 +27,16 @@ const entry = targets.reduce((entry, target) => {
   });
 }, {});
 
+const TARGET_BROWSERS = [
+  "last 1 IE versions",
+  "last 2 Edge versions",
+  "last 2 Chrome versions",
+  "last 2 Firefox versions",
+  "last 2 Safari versions",
+  "last 2 ios_saf versions",
+  "last 2 and_chr versions"
+];
+
 module.exports = {
   entry: entry,
   output: {
@@ -66,7 +76,7 @@ module.exports = {
                   {
                     modules: false,
                     targets: {
-                      browsers: "> 0.25%"
+                      browsers: TARGET_BROWSERS
                     },
                     forceAllTransforms: true,
                     useBuiltIns: "usage"
@@ -94,7 +104,10 @@ module.exports = {
             loader: "postcss-loader",
             options: {
               plugins: [
-                require("autoprefixer")({ grid: true }),
+                require("autoprefixer")(
+                  { grid: true,
+                    browsers: TARGET_BROWSERS }
+                ),
                 require("postcss-flexbugs-fixes")
               ]
             }
