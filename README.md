@@ -1,15 +1,31 @@
 # これは何か?
 Railsとwebpackを統合したテンプレートです(not webpacker)。
 メドピアのフロントエンド開発で最低限必要になる(と思われる)ものを入れてあります。
-各部署・プロジェクトで新しくrails newする時は、このレポジトリのフロントエンド部分を移植して構築してください。
+各部署・プロジェクトのrailsレポジトリに適用する場合は以下を参考にしてください。
 
-# どうやって移植すればいいのか?
-## 手段1: このレポジトリを複製する
+# どうやって適用すればいいのか?
+## 手段1: アプリケーションテンプレートを使用する
+推奨方法です。
+まずこのレポジトリをローカルにcloneしてください。
+```
+$ mkdir tmp
+$ cd tmp
+$ git clone https://github.com/medpeer-inc/rails-webpack-template.git
+```
+
+次に適用対象のレポジトリに移動し、アプリケーションテンプレートのコマンドを打ってください。
+```
+$ cd path/to/target-repo
+$ bin/rails app:template LOCATION=path/to/tmp/rails-webpack-template/template.rb
+```
+あとはCLIの指示に従ってください。
+
+## 手段2: このレポジトリを複製する
 楽な方法ですが、まだrails newしていない段階からしか使えません。cloneしてからremoteの向き先変えてpushしてください。
 <br /><br />
 <b>注) Railsや依存gemのバージョンが古すぎないか確認してください(一応定期的にgemやnpmのバージョンは上げていくつもりです)。</b>
 
-## 手段2: 手動で移植する
+## 手段3: 手動で移植する
 [この差分](https://github.com/medpeer-inc/rails-webpack-template/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
 
 # どうやって使えばいいのか?
