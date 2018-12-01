@@ -4,7 +4,7 @@ def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
 
-p 'コンフリクトした場合はオーラーライトしてください。'
+p 'コンフリクトした場合はオーバーライトしてください。'
 
 if yes? "remove 'app/assets'?"
   run 'rm -rf app/assets'
