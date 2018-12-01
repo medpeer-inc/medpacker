@@ -1,0 +1,1 @@
+run "touch hoge.rb"
