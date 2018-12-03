@@ -3,6 +3,7 @@ const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { VueLoaderPlugin } = require('vue-loader')
 
 const bundles = path.join(
   __dirname,
@@ -26,6 +27,16 @@ const entry = targets.reduce((entry, target) => {
   });
 }, {});
 
+const TARGET_BROWSERS = [
+  "last 1 IE versions",
+  "last 2 Edge versions",
+  "last 2 Chrome versions",
+  "last 2 Firefox versions",
+  "last 2 Safari versions",
+  "last 2 ios_saf versions",
+  "last 2 and_chr versions"
+];
+
 module.exports = {
   entry: entry,
   output: {
@@ -43,10 +54,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "style/[name]-[hash].css",
       chunkFilename: "style/[name].bundle-[hash].css"
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -60,7 +76,7 @@ module.exports = {
                   {
                     modules: false,
                     targets: {
-                      browsers: "> 0.25%"
+                      browsers: TARGET_BROWSERS
                     },
                     forceAllTransforms: true,
                     useBuiltIns: "usage"
@@ -88,7 +104,10 @@ module.exports = {
             loader: "postcss-loader",
             options: {
               plugins: [
-                require("autoprefixer")({ grid: true }),
+                require("autoprefixer")(
+                  { grid: true,
+                    browsers: TARGET_BROWSERS }
+                ),
                 require("postcss-flexbugs-fixes")
               ]
             }
@@ -130,7 +149,8 @@ module.exports = {
     alias: {
       "@js": path.resolve(__dirname, "app/bundles/javascripts"),
       "@style": path.resolve(__dirname, "app/bundles/stylesheets"),
-      "@image": path.resolve(__dirname, "app/bundles/images")
+      "@image": path.resolve(__dirname, "app/bundles/images"),
+      "vue$": "vue/dist/vue.esm.js"
     }
   },
   performance: {
