@@ -9,7 +9,8 @@
     "eslint": "eslint app/bundles/javascripts --ext js,vue",
     "eslint:fix": "eslint app/bundles/javascripts --ext js,vue --fix",
     "stylelint": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue",
-    "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue --fix"
+    "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue --fix",
+    "check:license": "license-checker"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -25,6 +26,7 @@
     "eslint": "^5.9.0",
     "eslint-plugin-vue": "^4.7.1",
     "file-loader": "^2.0.0",
+    "license-checker": "^24.0.1",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
