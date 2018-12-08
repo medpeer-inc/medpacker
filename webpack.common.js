@@ -122,9 +122,8 @@ module.exports = {
         test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/,
         use: [
           {
-            loader: "url-loader",
+            loader: "file-loader",
             options: {
-              limit: 100 * 1024,
               name: "img/[name]-[hash].[ext]"
             }
           }
