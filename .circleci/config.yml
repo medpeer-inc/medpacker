@@ -87,6 +87,7 @@ jobs:
           name: run yarn upgrade
           command: |
             yarn global add ci-yarn-upgrade
+            export PATH="$PATH:`yarn global bin`"
             GIT_USER_NAME=pipopotamasu GIT_USER_EMAIL=ec0156hx@gmail.com GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN} ci-yarn-upgrade --execute --verbose --latest
 
 workflows:
@@ -94,7 +95,7 @@ workflows:
   build_and_rspec:
     jobs:
       - build
-      - bundle_update:
+      - rspec:
           requires:
             - build
   build_and_bundle_update:
@@ -105,7 +106,7 @@ workflows:
             - build
     triggers:
       - schedule:
-          cron: "0 1 14 * *" # JST: 10:00
+          cron: "0 1 1 * *" # JST: 10:00
           filters:
             branches:
               only: master
@@ -117,7 +118,7 @@ workflows:
             - build
     triggers:
       - schedule:
-          cron: "0 1 14 * *" # JST: 10:00
+          cron: "0 4 14 * *" # JST: 13:00
           filters:
             branches:
               only: master
