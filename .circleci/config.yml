@@ -86,6 +86,10 @@ jobs:
       - run:
           name: run yarn upgrade
           command: |
+            mkdir -p ~/.ssh
+            touch ~/.ssh/known_hosts
+            ssh-keygen -R github.com
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
             yarn global add ci-yarn-upgrade
             export PATH="$PATH:`yarn global bin`"
             GIT_USER_NAME=pipopotamasu GIT_USER_EMAIL=ec0156hx@gmail.com GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN} ci-yarn-upgrade --execute --verbose --latest
@@ -118,7 +122,7 @@ workflows:
             - build
     triggers:
       - schedule:
-          cron: "0 4 14 * *" # JST: 13:00
+          cron: "0 1 14 * *" # JST: 10:00
           filters:
             branches:
               only: master
