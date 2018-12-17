@@ -123,7 +123,7 @@ workflows:
             - build
     triggers:
       - schedule:
-          cron: "0 12 17 * *" # JST: 21:00
+          cron: "0 1 1 * *" # JST: 10:00
           filters:
             branches:
               only: master
