@@ -95,7 +95,6 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              minimize: true,
               // css-loaderの前に噛ませるloaderの数
               importLoaders: 2
             }
