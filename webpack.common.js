@@ -3,7 +3,7 @@ const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
+const { VueLoaderPlugin } = require('vue-loader')
 
 const bundles = path.join(
   __dirname,
@@ -103,10 +103,10 @@ module.exports = {
             loader: "postcss-loader",
             options: {
               plugins: [
-                require("autoprefixer")({
-                  grid: true,
-                  browsers: TARGET_BROWSERS
-                }),
+                require("autoprefixer")(
+                  { grid: true,
+                    browsers: TARGET_BROWSERS }
+                ),
                 require("postcss-flexbugs-fixes")
               ]
             }
@@ -148,7 +148,7 @@ module.exports = {
       "@js": path.resolve(__dirname, "app/bundles/javascripts"),
       "@style": path.resolve(__dirname, "app/bundles/stylesheets"),
       "@image": path.resolve(__dirname, "app/bundles/images"),
-      vue$: "vue/dist/vue.esm.js"
+      "vue$": "vue/dist/vue.esm.js"
     }
   },
   performance: {
