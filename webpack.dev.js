@@ -6,6 +6,8 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "source-map",
   devServer: {
+    // NOTE: for ssl
+    // https: true,
     publicPath: "/bundles/",
     contentBase: path.resolve(__dirname, "public", "bundles"),
     host: "0.0.0.0",
