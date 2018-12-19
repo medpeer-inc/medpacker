@@ -1,7 +1,7 @@
 # 目次
 - [これは何か?](https://github.com/medpeer-inc/rails-webpack-template#これは何か)
 - [どうやって適用すればいいのか?](https://github.com/medpeer-inc/rails-webpack-template#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [SSL(HTTPS)対応](https://github.com/medpeer-inc/rails-webpack-template/ssl#sslhttps%E5%AF%BE%E5%BF%9C)
+- [SSL(HTTPS)対応](https://github.com/medpeer-inc/rails-webpack-template#sslhttps%E5%AF%BE%E5%BF%9C)
 - [どうやって使えばいいのか?](https://github.com/medpeer-inc/rails-webpack-template#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
 - [何が入っているのか?](https://github.com/medpeer-inc/rails-webpack-template#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
 - [Q&A](https://github.com/medpeer-inc/rails-webpack-template#qa)
@@ -44,10 +44,12 @@ $ bin/rails app:template LOCATION=path/to/tmp/rails-webpack-template/template.rb
 
 ## STEP1: webpack-dev-serverをHTTPSで起動させる
 以下ファイルのコメントアウトを解除してください。
+<br>
 https://github.com/medpeer-inc/rails-webpack-template/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/webpack.dev.js#L10
 
 ## STEP2: manifest.jsonのURIを変える
 以下ファイルのコメントアウトを解除してください。そしてhttpの方を削除してください。
+<br>
 https://github.com/medpeer-inc/rails-webpack-template/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/app/helpers/webpack_bundle_helper.rb#L71
 
 ## STEP3: railsのコンテナの3035番ポートを開ける
