@@ -36,7 +36,7 @@ $ bin/rails app:template LOCATION=path/to/tmp/rails-webpack-template/template.rb
 <b>注) Railsや依存gemのバージョンが古すぎないか確認してください(一応定期的にgemやnpmのバージョンは上げていくつもりです)。</b>
 
 ## 手段3: 手動で移植する
-[この差分](https://github.com/medpeer-inc/rails-webpack-template/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
+[この差分](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
 
 # SSL(HTTPS)対応
 おそらくほとんどのプロジェクトでオレオレ証明書を用いたエセSSL環境下で開発環境を構築すると思います。
