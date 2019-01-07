@@ -1,5 +1,5 @@
 {
-  "name": "rails-webpack-template",
+  "name": "medpacker",
   "private": true,
   "scripts": {
     "dev": "webpack --mode=development --progress --config webpack.dev.js",
