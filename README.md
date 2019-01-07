@@ -45,12 +45,12 @@ $ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 ## STEP1: webpack-dev-serverをHTTPSで起動させる
 以下ファイルのコメントアウトを解除してください。
 <br>
-https://github.com/medpeer-inc/medpacker/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/webpack.dev.js#L10
+https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L10
 
 ## STEP2: manifest.jsonのURIを変える
 以下ファイルのコメントアウトを解除してください。そしてhttpの方を削除してください。
 <br>
-https://github.com/medpeer-inc/medpacker/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/app/helpers/webpack_bundle_helper.rb#L71
+https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb#L71
 
 ## STEP3: railsのコンテナの3035番ポートを開ける
 railsのDockerfileもしくはdocker-compose.ymlで、3035番ポートを開けるように記述してください。
