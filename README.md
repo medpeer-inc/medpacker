@@ -1,12 +1,12 @@
 # 目次
-- [これは何か?](https://github.com/medpeer-inc/rails-webpack-template#これは何か)
-- [どうやって適用すればいいのか?](https://github.com/medpeer-inc/rails-webpack-template#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [SSL(HTTPS)対応](https://github.com/medpeer-inc/rails-webpack-template#sslhttps%E5%AF%BE%E5%BF%9C)
-- [どうやって使えばいいのか?](https://github.com/medpeer-inc/rails-webpack-template#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [何が入っているのか?](https://github.com/medpeer-inc/rails-webpack-template#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
-- [Q&A](https://github.com/medpeer-inc/rails-webpack-template#qa)
-- [注意点](https://github.com/medpeer-inc/rails-webpack-template#%E6%B3%A8%E6%84%8F%E7%82%B9)
-- [参考資料](https://github.com/medpeer-inc/rails-webpack-template#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99)
+- [これは何か?](https://github.com/medpeer-inc/medpacker#これは何か)
+- [どうやって適用すればいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
+- [SSL(HTTPS)対応](https://github.com/medpeer-inc/medpacker#sslhttps%E5%AF%BE%E5%BF%9C)
+- [どうやって使えばいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
+- [何が入っているのか?](https://github.com/medpeer-inc/medpacker#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
+- [Q&A](https://github.com/medpeer-inc/medpacker#qa)
+- [注意点](https://github.com/medpeer-inc/medpacker#%E6%B3%A8%E6%84%8F%E7%82%B9)
+- [参考資料](https://github.com/medpeer-inc/medpacker#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99)
 
 # これは何か?
 Railsとwebpackを統合したテンプレートです(not webpacker)。
@@ -20,13 +20,13 @@ Railsとwebpackを統合したテンプレートです(not webpacker)。
 ```
 $ mkdir tmp
 $ cd tmp
-$ git clone https://github.com/medpeer-inc/rails-webpack-template.git
+$ git clone https://github.com/medpeer-inc/medpacker.git
 ```
 
 次に適用対象のレポジトリに移動し、アプリケーションテンプレートのコマンドを打ってください。
 ```
 $ cd path/to/target-repo
-$ bin/rails app:template LOCATION=path/to/tmp/rails-webpack-template/template.rb
+$ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 ```
 あとはCLIの指示に従ってください。
 
@@ -45,12 +45,12 @@ $ bin/rails app:template LOCATION=path/to/tmp/rails-webpack-template/template.rb
 ## STEP1: webpack-dev-serverをHTTPSで起動させる
 以下ファイルのコメントアウトを解除してください。
 <br>
-https://github.com/medpeer-inc/rails-webpack-template/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/webpack.dev.js#L10
+https://github.com/medpeer-inc/medpacker/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/webpack.dev.js#L10
 
 ## STEP2: manifest.jsonのURIを変える
 以下ファイルのコメントアウトを解除してください。そしてhttpの方を削除してください。
 <br>
-https://github.com/medpeer-inc/rails-webpack-template/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/app/helpers/webpack_bundle_helper.rb#L71
+https://github.com/medpeer-inc/medpacker/blob/cc63424a8a6a65c249d2df9583c50b70903fd9e3/app/helpers/webpack_bundle_helper.rb#L71
 
 ## STEP3: railsのコンテナの3035番ポートを開ける
 railsのDockerfileもしくはdocker-compose.ymlで、3035番ポートを開けるように記述してください。
@@ -69,11 +69,11 @@ ports:
 ## ざっくり編
 ざっくりした使い方は以下ファイルを見て貰えるとざっくりわかると思います。
 ```
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/views/layouts/application.html.erb
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/views/home/index.html.erb
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/bundles/javascripts/entries/application.js
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/bundles/javascripts/entries/home/index.js
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/package.json
+https://github.com/medpeer-inc/medpacker/blob/master/app/views/layouts/application.html.erb
+https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb
+https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js
+https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/home/index.js
+https://github.com/medpeer-inc/medpacker/blob/master/package.json
 ```
 
 ## 詳細編
@@ -91,7 +91,7 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 
 ### jsの読み込み
 #### application.js
-[application.js](https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。ga等の計測系やrollbarなどのエラートラッキング系のjsなどを入れてください。注意点として、DOMに纏わる処理をするjsはここには入れないでください、正常に動作しない可能性があります。
+[application.js](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。ga等の計測系やrollbarなどのエラートラッキング系のjsなどを入れてください。注意点として、DOMに纏わる処理をするjsはここには入れないでください、正常に動作しない可能性があります。
 
 #### エントリーポイントのjs
 各ページ毎に読み込むjsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
@@ -113,7 +113,7 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 
 ### cssの読み込み
 #### application.scss
-[application.scss](https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/bundles/stylesheets/entries/application.scss)は全ページ共通で使用するcssを書く場所です。デフォルトで読み込んであります。
+[application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss)は全ページ共通で使用するcssを書く場所です。デフォルトで読み込んであります。
 
 #### エントリーポイントのcss
 各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、jsのエントリーポイントにてimportしてください。
@@ -146,7 +146,7 @@ jsと同様に、必ず`content_for :bundel_js`を使用してください。
 
 ### webpack
 js, css, 画像ファイルをビルドします。ビルドしたファイルは`public/bundles`以下に出力します。
-webpackでビルドしたファイルは、[このヘルパー](https://github.com/medpeer-inc/rails-webpack-template/blob/master/app/helpers/webpack_bundle_helper.rb)で定義されているメソッドで読み込むことができます。
+webpackでビルドしたファイルは、[このヘルパー](https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb)で定義されているメソッドで読み込むことができます。
 
 ビルドには、developmentモードによるビルドとproductionモードによるビルドの2種類があります。
 
@@ -182,9 +182,9 @@ developtmentモードと違い、ビルドされたアセットが圧縮され�
 ただwebpack-dev-serverですがdocker上で動かす場合、dockerの設定とwebpack-dev-serverの設定(hostやportあたり)を調整する必要がある場合があります。
 webpack-dev-server側は以下のファイルを修正する必要があるかもしれません。
 ```
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/webpack.dev.js#L8
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/config/dev_server_proxy.rb
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/config/environments/development.rb#L64
+https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L8
+https://github.com/medpeer-inc/medpacker/blob/master/config/dev_server_proxy.rb
+https://github.com/medpeer-inc/medpacker/blob/master/config/environments/development.rb#L64
 ```
 
 ## babel系
@@ -192,7 +192,7 @@ jsを色々なブラウザで読み込めるように(例えば最新の記法�
 すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
 
 このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
-https://github.com/medpeer-inc/rails-webpack-template/blob/master/webpack.common.js#L30
+https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30
 
 もし自分で設定したいよという場合は以下2つのサイトを参考に設定してみてください(やり方がよくわからないという場合はお近くのフロントエンドエンジニアまで)。
 - https://github.com/browserslist/browserslist
