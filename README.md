@@ -90,6 +90,24 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 ```
 
 ### jsの読み込み
+#### ディレクトリ構成
+```
+app/
+  └ bundles/
+    └ javascripts/
+      ├ entries/     # エントリーポイントとなるjsを置く場所
+        └ ...
+      └ modules/     # 機能毎に分割されたjsを置く場所
+        └ ...
+      └ components/  # Vue.jsのコンポーネントを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+      └ plugins/     # Vue.jsのプラグインを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+      └ directives/  # Vue.jsのカスタムディレクティブを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+      └ store/       # Vue.jsのstoreを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+```
 #### application.js
 [application.js](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。ga等の計測系やrollbarなどのエラートラッキング系のjsなどを入れてください。注意点として、DOMに纏わる処理をするjsはここには入れないでください、正常に動作しない可能性があります。
 
@@ -112,8 +130,25 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 もしこれを用いない場合、上手くjsが動作しない・画面の描画が遅くなると言った不具合が生じます。
 
 ### cssの読み込み
+#### ディレクトリ構成
+```
+app/
+  └ bundles/
+    └ stylesheets/
+      valiables.scss # 変数を置く
+      ├ entries/     # エントリーポイントで読み込むscssを置く場所
+        └ ...
+      └ components/  # scssのコンポーネントを置く
+        └ ...
+      └ mixin/       # scssのミックスインを置く
+        └ ...
+```
+
+プロジェクト毎に適宜ディレクトリ切ってください。
+
 #### application.scss
 [application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss)は全ページ共通で使用するcssを書く場所です。デフォルトで読み込んであります。
+
 
 #### エントリーポイントのcss
 各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、jsのエントリーポイントにてimportしてください。
