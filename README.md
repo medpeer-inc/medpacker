@@ -95,7 +95,7 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 app/
   └ bundles/
     └ javascripts/
-      ├ packs/       # エントリーポイントとなるjsを置く場所
+      ├ entries/     # エントリーポイントとなるjsを置く場所
         └ ...
       └ modules/     # 機能毎に分割されたjsを置く場所
         └ ...
@@ -130,8 +130,25 @@ app/
 もしこれを用いない場合、上手くjsが動作しない・画面の描画が遅くなると言った不具合が生じます。
 
 ### cssの読み込み
+#### ディレクトリ構成
+```
+app/
+  └ bundles/
+    └ stylesheets/
+      valiables.scss # 変数を置く
+      ├ entries/     # エントリーポイントで読み込むscssを置く場所
+        └ ...
+      └ components/  # scssのコンポーネントを置く
+        └ ...
+      └ mixin/       # scssのミックスインを置く
+        └ ...
+```
+
+プロジェクト毎に適宜ディレクトリ切ってください。
+
 #### application.scss
 [application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss)は全ページ共通で使用するcssを書く場所です。デフォルトで読み込んであります。
+
 
 #### エントリーポイントのcss
 各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、jsのエントリーポイントにてimportしてください。
