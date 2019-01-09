@@ -90,6 +90,24 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 ```
 
 ### jsの読み込み
+#### ディレクトリ構成
+```
+app/
+  └ bundles/
+    └ javascripts/
+      ├ packs/       # エントリーポイントとなるjsを置く場所
+        └ ...
+      └ modules/     # 機能毎に分割されたjsを置く場所
+        └ ...
+      └ components/  # Vue.jsのコンポーネントを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+      └ plugins/     # Vue.jsのプラグインを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+      └ directives/  # Vue.jsのカスタムディレクティブを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+      └ store/       # Vue.jsのstoreを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+        └ ...
+```
 #### application.js
 [application.js](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。ga等の計測系やrollbarなどのエラートラッキング系のjsなどを入れてください。注意点として、DOMに纏わる処理をするjsはここには入れないでください、正常に動作しない可能性があります。
 
