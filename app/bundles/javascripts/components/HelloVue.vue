@@ -1,6 +1,8 @@
 <template>
   <div class="hello-vue">
-    <span class="message">{{ message }}</span>
+    <span class="message">
+      {{ message }}
+    </span>
   </div>
 </template>
 
