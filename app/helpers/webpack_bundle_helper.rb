@@ -57,7 +57,6 @@ module WebpackBundleHelper
 
   def dev_manifest
     OpenURI.open_uri("#{dev_server_host}/bundles/manifest.json", ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE).read
-  # read manifest when dev server not running
   rescue Errno::ECONNREFUSED
     File.read(MANIFEST_PATH)
   end
