@@ -1,6 +1,5 @@
 require 'rack/proxy'
 
-# proxy getting asset from webpack-dev-server for other hosts except for localhost
 class DevServerProxy < Rack::Proxy
 
   def perform_request(env)
