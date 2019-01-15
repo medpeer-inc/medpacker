@@ -149,7 +149,11 @@ module.exports = {
       "@style": path.resolve(__dirname, "app/bundles/stylesheets"),
       "@image": path.resolve(__dirname, "app/bundles/images"),
       "vue$": "vue/dist/vue.esm.js"
-    }
+    },
+    extensions: [
+      ".js",
+      ".vue"
+    ]
   },
   performance: {
     hints: "warning", // default value
