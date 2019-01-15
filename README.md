@@ -284,10 +284,6 @@ webpackが昔のバージョンのままだと、他のnpmパッケージのバ�
 # 注意点
 - npmコマンドでパッケージを追加しないでください。yarnでやってください。
 
-# 参考資料
-以下記事を参考にwebpack, webpack-dev-serverとrailsのつなぎこみ部分を実装させていただきました。
-記事ありがとうございました！
-
-- https://inside.pixiv.blog/subal/4615
-- https://medium.com/studist-dev/goodbye-webpacker-183155a942f6
+# LICENSE
+This software is released under the MIT License, see the license file.
 
