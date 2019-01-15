@@ -126,7 +126,7 @@ app/
 </div>
 ```
 ここで注意して欲しいのが、必ず`content_for :bundel_js`を使用してほしい点です。
-これによるアセットの設定先はbodyタグの最後になります。
+これによるアセットの設定先はheadタグの最後になります。
 もしこれを用いない場合、上手くjsが動作しない・画面の描画が遅くなると言った不具合が生じます。
 
 ### cssの読み込み
@@ -167,11 +167,10 @@ import '@style/entries/entries/home/index.scss'
   ...何かしらのhtml
 </div>
 ```
-jsと同様に、必ず`content_for :bundel_js`を使用してください。
+jsと同様に、必ず`content_for :bundel_css`を使用してください。
 これによるアセットの設定先はheadタグになります。
-もしこれを用いない場合、FOUC(Flash of Unstyled Content)という現象が起こる可能性があります。
 繰り返しますが、必ず<b>jsのエントリーポイントにてscssのファイルをimportしてください。</b>
-そうしないとwebpackがscssをビルドしてくれず、cssが`stylesheet_bundle_tag`の実行時にエラーが起きます。
+そうしないとwebpackがscssをビルドしてくれず、`stylesheet_bundle_tag`の実行時にcssが読み込まれずエラーが起きます。
 
 # 何が入っているか?
 このレポジトリに導入されている主要なライブラリや機能を紹介します。
@@ -277,9 +276,12 @@ assets pipelineの特性上、全てのjs, cssをそれぞれ1ファイルにま
 そのためassets pipelineは外してあります。
 
 ## webpackerはどうよ?
-これに夢をみていた時代もありました。
-しかし、いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました。
+いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました(やっと[4系出そう](https://github.com/rails/webpacker/releases)ですね)。
 webpackが昔のバージョンのままだと、他のnpmパッケージのバージョンアップにかなり制限がかかるのでもうwebpacker捨てちまおうという判断です。
+
+## remote: trueでajaxが動かないんだけど...
+以下をコメントアウトしてください。
+https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js#L3
 
 # 注意点
 - npmコマンドでパッケージを追加しないでください。yarnでやってください。
