@@ -1,13 +1,14 @@
 require 'rack/proxy'
 
 class DevServerProxy < Rack::Proxy
+  PROTOCOL = 'http'.freeze
 
   def perform_request(env)
     if env['PATH_INFO'].start_with?('/bundles/')
-      env['HTTP_HOST'] = dev_server_host
-      env['HTTP_X_FORWARDED_HOST'] = dev_server_host
-      env['HTTP_X_FORWARDED_SERVER'] = dev_server_host
-      super
+      env['HTTP_HOST'] = env['HTTP_X_FORWARDED_HOST'] = env['HTTP_X_FORWARDED_SERVER'] = dev_server_host
+      env['HTTPS'] = env['HTTP_X_FORWARDED_SSL'] = 'off'
+      env['HTTP_X_FORWARDED_PROTO'] = env['HTTP_X_FORWARDED_SCHEME'] = PROTOCOL
+      super(env)
     else
       @app.call(env)
     end
