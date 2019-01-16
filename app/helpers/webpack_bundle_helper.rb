@@ -66,8 +66,6 @@ module WebpackBundleHelper
   end
 
   def dev_server_host
-    # NOTE: for ssl
-    # "https://#{Rails.application.config.dev_server_host}"
     "http://#{Rails.application.config.dev_server_host}"
   end
 end
