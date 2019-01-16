@@ -1,7 +1,7 @@
 # 目次
 - [これは何か?](https://github.com/medpeer-inc/medpacker#これは何か)
 - [どうやって適用すればいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [SSL(HTTPS)環境下でのwebpack-dev-server設定](https://github.com/medpeer-inc/medpacker#sslhttps%E5%AF%BE%E5%BF%9C)
+- [SSL(HTTPS)環境下でのwebpack-dev-server設定](https://github.com/medpeer-inc/medpacker#sslhttps%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E3%81%AEwebpack-dev-server%E8%A8%AD%E5%AE%9A)
 - [どうやって使えばいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
 - [何が入っているのか?](https://github.com/medpeer-inc/medpacker#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
 - [Q&A](https://github.com/medpeer-inc/medpacker#qa)
@@ -44,7 +44,10 @@ $ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 
 ## webpack-dev-serverのpublicオプションの設定
 以下のオプションに、開発環境下のドメインを設定してください。
+<br />
 ex) ドメインがhoge.testなら、hoge.testと設定してください。
+
+https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L9
 
 ここまでできたら、webpack-dev-serverが正常に動くか確認してみてください。
 正常に動かなかったらお近くのフロントエンドエンジニアに聞いてみてください。
@@ -265,6 +268,7 @@ webpackが昔のバージョンのままだと、他のnpmパッケージのバ�
 
 ## remote: trueでajaxが動かないんだけど...
 以下をコメントアウトしてください。
+<br />
 https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js#L3
 
 # 注意点
