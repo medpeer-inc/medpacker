@@ -1,7 +1,7 @@
 require 'rack/proxy'
 
 class DevServerProxy < Rack::Proxy
-  PROTOCOL = 'http'.freeze
+  PROTOCOL = 'http'
 
   def perform_request(env)
     if env['PATH_INFO'].start_with?('/bundles/')
