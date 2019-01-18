@@ -115,7 +115,7 @@ app/
         └ ...
 ```
 #### application.js
-[application.js](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。ga等の計測系やrollbarなどのエラートラッキング系のjsなどを入れてください。注意点として、DOMに纏わる処理をするjsはここには入れないでください、正常に動作しない可能性があります。
+[application.js](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。
 
 #### エントリーポイントのjs
 各ページ毎に読み込むjsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
@@ -283,7 +283,7 @@ assets pipelineの特性上、全てのjs, cssをそれぞれ1ファイルにま
 
 ## webpackerはどうよ?
 いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました(やっと[4系出そう](https://github.com/rails/webpacker/releases)ですね)。
-webpackが昔のバージョンのままだと、他のnpmパッケージのバージョンアップにかなり制限がかかるのでもうwebpacker捨てちまおうという判断です。
+webpackが昔のバージョンのままだと、依存関係がめんどくさくなるのでもうwebpacker捨てちまおうという判断です。
 
 ## remote: trueでajaxが動かないんだけど...
 以下をコメントアウトしてください。
