@@ -34,6 +34,7 @@ $ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 楽な方法ですが、まだrails newしていない段階からしか使えません。cloneしてからremoteの向き先変えてpushしてください。
 <br /><br />
 <b>注) Railsや依存gemのバージョンが古すぎないか確認してください(一応定期的にgemやnpmのバージョンは上げていくつもりです)。</b>
+→ 月に1回npmパッケージとgemのバージョンあげてます。
 
 ## 手段3: 手動で移植する
 [この差分](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
