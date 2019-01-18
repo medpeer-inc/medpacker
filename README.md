@@ -49,6 +49,25 @@ ex) ドメインがhoge.testなら、hoge.testと設定してください。
 
 https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L9
 
+## nginxでhttpsのリクエストをプロキシする
+```
+server {
+  listen 443 ssl;
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     nginx setting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  location /sockjs-node {
+    proxy_redirect off;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_pass http://host_name:3035;
+  }
+}
+```
+
 ここまでできたら、webpack-dev-serverが正常に動くか確認してみてください。
 正常に動かなかったらお近くのフロントエンドエンジニアに聞いてみてください。
 
