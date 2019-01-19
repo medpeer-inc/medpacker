@@ -11,10 +11,12 @@
     <h1 id="title"></h1>
   </div>
   <div class="box-images">
+    <div id="vue-app" class="box-vue">
+      <hello-medbear />
+    </div>
     <div class="img-rails"></div>
-    <div class="img-webpack"></div>
-  </div>
-  <div id="vue-app" class="box-vue">
-    <hello-vue />
+    <div class="img-webpack">
+      <%= image_bundle_tag 'img/webpack-logo.svg', width: 400, height: 200 %>
+    </div>
   </div>
 </div>
