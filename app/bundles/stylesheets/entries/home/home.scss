@@ -2,18 +2,12 @@
   .box-images {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .img-rails {
       width: 400px;
       height: 200px;
       background-image: url("~@image/rails-logo.svg");
-      background-repeat: no-repeat;
-    }
-    
-    .img-webpack {
-      width: 400px;
-      height: 200px;
-      background-image: url("~@image/webpack-logo.svg");
       background-repeat: no-repeat;
     }
   }
