@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.3",
     "babel-loader": "^8.0.4",
+    "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.11.1",
     "eslint-plugin-vue": "^5.0.0",
