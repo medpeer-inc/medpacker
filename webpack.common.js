@@ -3,7 +3,8 @@ const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const bundles = path.join(
   __dirname,
@@ -55,7 +56,10 @@ module.exports = {
       filename: "style/[name]-[hash].css",
       chunkFilename: "style/[name].bundle-[hash].css"
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CopyWebpackPlugin([
+      { from: 'app/bundles/images', to: 'img/[folder]/[name]-[hash].[ext]' }
+    ])
   ],
   module: {
     rules: [
@@ -104,8 +108,10 @@ module.exports = {
             options: {
               plugins: [
                 require("autoprefixer")(
-                  { grid: true,
-                    browsers: TARGET_BROWSERS }
+                  {
+                    grid: true,
+                    browsers: TARGET_BROWSERS
+                  }
                 ),
                 require("postcss-flexbugs-fixes")
               ]
