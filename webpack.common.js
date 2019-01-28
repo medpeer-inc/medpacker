@@ -58,7 +58,7 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new CopyWebpackPlugin([
-      { from: 'app/bundles/images', to: 'img/[folder]/[name]-[hash].[ext]' }
+      { from: 'app/bundles/images', to: 'img/[path][name]-[hash].[ext]' }
     ])
   ],
   module: {
