@@ -1,5 +1,5 @@
 <template>
-  <div class="hello-medbear"></div>
+  <div class="hello-medbear" />
 </template>
 
 <style lang="scss" scoped>
