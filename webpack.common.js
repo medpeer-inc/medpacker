@@ -58,7 +58,17 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new CopyWebpackPlugin([
-      { from: 'app/bundles/images', to: 'img/[path][name]-[hash].[ext]' }
+      {
+        from: 'app/bundles/images',
+        to: 'img/[path][name]-[hash].[ext]',
+        transform: function (content, filepath) {
+          console.log(content)
+          console.log(filepath)
+          // var manifestContents = {'foo.zip': 'foo-' + require('md5-file').sync(filepath) + '.zip'}
+          // require('fs').writeFileSync('manifest.json', JSON.stringify(manifestContents))
+          // return content
+        }
+      }
     ])
   ],
   module: {
