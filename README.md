@@ -179,6 +179,20 @@ jsと同様に、必ず`content_for :bundel_css`を使用してください。
 繰り返しますが、必ず<b>jsのエントリーポイントにてscssのファイルをimportしてください。</b>
 そうしないとwebpackがscssをビルドしてくれず、`stylesheet_bundle_tag`の実行時にcssが読み込まれずエラーが起きます。
 
+### 画像の読み込み
+もしimageタグで画像を読み込みたい場合は、以下のようにする必要があります(cssのbackground-imageで読み込む場合は以下を実施する必要はありません)。
+
+#### jsファイルに画像ファイルをimport
+`app/bundles/images/image_plugin.js`に読み込みたい画像をimportしてください。
+例えば以下のように
+```
+# app/bundles/images/image_plugin.js
+import './webpack-logo.svg';
+```
+
+#### image_bundle_tagを使って、erbファイルに画像を埋め込む
+[こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
+
 # 何が入っているか?
 このレポジトリに導入されている主要なライブラリや機能を紹介します。
 
