@@ -62,11 +62,13 @@ module.exports = {
         from: 'app/bundles/images',
         to: 'img/[path][name]-[hash].[ext]',
         transform: function (content, filepath) {
-          console.log(content)
-          console.log(filepath)
-          // var manifestContents = {'foo.zip': 'foo-' + require('md5-file').sync(filepath) + '.zip'}
-          // require('fs').writeFileSync('manifest.json', JSON.stringify(manifestContents))
-          // return content
+          const filenameWithExtension = filepath.split("/")[filepath.split("/").length - 1]
+          const reg = /(.*)(?:\.([^.]+$))/;
+          const fileName = filenameWithExtension.match(reg)[1];
+          const extension = filenameWithExtension.match(reg)[2];
+          const manifestContents = { [filenameWithExtension]: `${fileName}-${require('md5-file').sync(filepath)}.${extension}` }
+          require('fs').writeFileSync('public/bundles/manifest.json', JSON.stringify(manifestContents))
+          return content
         }
       }
     ])
