@@ -183,10 +183,10 @@ jsと同様に、必ず`content_for :bundel_css`を使用してください。
 もしimageタグで画像を読み込みたい場合は、以下のようにする必要があります(cssのbackground-imageで読み込む場合は以下を実施する必要はありません)。
 
 #### jsファイルに画像ファイルをimport
-`app/bundles/images/image_plugin.js`に読み込みたい画像をimportしてください。
+`app/bundles/javascripts/entries/image.js`に読み込みたい画像をimportしてください。
 例えば以下のように
 ```
-# app/bundles/images/image_plugin.js
+# app/bundles/javascripts/entries/image.js
 import './webpack-logo.svg';
 ```
 
