@@ -104,8 +104,10 @@ module.exports = {
             options: {
               plugins: [
                 require("autoprefixer")(
-                  { grid: true,
-                    browsers: TARGET_BROWSERS }
+                  {
+                    grid: true,
+                    browsers: TARGET_BROWSERS
+                  }
                 ),
                 require("postcss-flexbugs-fixes")
               ]
@@ -114,7 +116,13 @@ module.exports = {
           {
             loader: "sass-loader",
             options: {}
-          }
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: ['app/bundles/stylesheets/variables.scss']
+            },
+          },
         ]
       },
       {

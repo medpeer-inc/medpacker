@@ -1,5 +1,5 @@
-// write common css
-@import "~@style/variables.scss";
+// webpack.common.jsかここでvariables.scssとmixinを読み込んでください。
+// @import "~@style/variables.scss";
 
 body {
   background-color: $body-bg;
