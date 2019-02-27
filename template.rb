@@ -52,7 +52,7 @@ gem_group :test do
   gem 'factory_bot_rails'
 end
 
-run 'bundle install'
+run 'bundle install --path vendor/bundle --jobs=4'
 run 'yarn install'
 run 'yarn run dev'
 
