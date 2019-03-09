@@ -1,6 +1,8 @@
 // webpack.common.jsかここでvariables.scssとmixinを読み込んでください。
 // @import "~@style/variables.scss";
 
+@import "~normalize.css";
+
 body {
   background-color: $body-bg;
   display: flex;
