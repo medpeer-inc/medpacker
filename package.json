@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "normalize.css": "^8.0.1",
     "rails-ujs": "^5.2.2",
     "vue": "^2.6.8"
   },
