@@ -79,7 +79,8 @@ module.exports = {
                       browsers: TARGET_BROWSERS
                     },
                     forceAllTransforms: true,
-                    useBuiltIns: "usage"
+                    useBuiltIns: "usage",
+                    corejs: 3
                   }
                 ]
               ],
