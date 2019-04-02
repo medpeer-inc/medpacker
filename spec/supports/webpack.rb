@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  $_run_webpack = false
+  $_run_webpack = ENV['SKIP_WEBPACK_BUILD'] === 'true'
 
   config.before(:context, js: :true) do
     unless $_run_webpack
