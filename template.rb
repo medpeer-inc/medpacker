@@ -22,7 +22,13 @@ if yes? 'need example page?'
 end
 
 copy_file '.eslintrc.json'
-copy_file '.gitignore'
+
+if File.exists?(".gitignore")
+  append_to_file '.gitignore' do
+    '/public/bundles'
+  end
+end
+
 copy_file '.rspec'
 copy_file '.stylelintrc.json'
 
