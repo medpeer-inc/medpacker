@@ -193,6 +193,15 @@ import './webpack-logo.svg';
 #### image_bundle_tagを使って、erbファイルに画像を埋め込む
 [こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
 
+### E2Eテスト(というかfeature spec)
+デフォルトでは、実行対象のrspec内に`js: true`があれば一度だけwebpackのビルドが走り、それでビルドされたアセットを使用してjsを使用したfeature specが実行されるようになっています。
+
+もしrspec実行時にwebpackのビルドを走らせたくなかったら、`SKIP_WEBPACK_BUILD`という環境変数に`true`を渡してあげるとビルドがスキップされるので必要に応じて使ってください。テストを並列で実行させたい時などは事前にwebpackでビルドしておいて、`SKIP_WEBPACK_BUILD=true`でrspec実行時なのではビルドしないようにさせた方が効率がいいと思います。
+
+```
+$ SKIP_WEBPACK_BUILD=true bundle exec rspec
+```
+
 # 何が入っているか?
 このレポジトリに導入されている主要なライブラリや機能を紹介します。
 
