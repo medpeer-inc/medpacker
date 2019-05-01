@@ -9,7 +9,7 @@ module.exports = merge(common, {
     // public: "myapp.test",
     publicPath: "/bundles/",
     contentBase: path.resolve(__dirname, "public", "bundles"),
-    host: "0.0.0.0",
+    host: "localhost",
     port: 3035,
     disableHostCheck: true,
     headers: {
