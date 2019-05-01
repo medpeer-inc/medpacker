@@ -121,9 +121,9 @@ workflows:
       - yarn_upgrade:
           requires:
             - build
-    triggers:
-      - schedule:
-          cron: "0 2 1 * *" # JST: 11:00
-          filters:
-            branches:
-              only: master
+    # triggers:
+    #   - schedule:
+    #       cron: "0 2 1 * *" # JST: 11:00
+    #       filters:
+    #         branches:
+    #           only: master
