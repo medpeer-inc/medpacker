@@ -89,8 +89,8 @@ jobs:
           command: |
             mkdir -p ~/.ssh
             touch ~/.ssh/known_hosts
-            ssh-keygen -R github.com
-            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+            ssh-keygen -R 192.30.253.113
+            ssh-keyscan -H 192.30.253.113 >> ~/.ssh/known_hosts
             yarn global add ci-yarn-upgrade
             export PATH="$PATH:`yarn global bin`"
             GIT_USER_NAME=pipopotamasu GIT_USER_EMAIL=ec0156hx@gmail.com GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN} ci-yarn-upgrade --execute --verbose --latest
