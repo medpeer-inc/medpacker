@@ -12,7 +12,7 @@
     "eslint:fix": "eslint app/bundles/javascripts --ext js,vue --fix",
     "stylelint": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue",
     "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue --fix",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --runInBand"
   },
   "dependencies": {
     "axios": "^0.18.0",
