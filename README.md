@@ -54,7 +54,7 @@ https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L9
 ```
 server {
   listen 443 ssl;
-  
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      nginx setting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,6 +94,7 @@ $ yarn run eslint         # eslint
 $ yarn run eslint:fix     # eslint自動修正モード
 $ yarn run stylelint      # cssのlint
 $ yarn run stylelint:fix  # cssのlint自動修正モード
+$ yarn run test           # jestによるユニットテスト
 ```
 
 ### jsの読み込み
@@ -202,6 +203,27 @@ import './webpack-logo.svg';
 $ SKIP_WEBPACK_BUILD=true bundle exec rspec
 ```
 
+### ユニットテスト
+Railsに依存しないフロントエンドのユニットテスト環境をjestで用意しています。
+`spec/javascripts/`配下に置かれたjsファイル（`**/*.spec.js`）をテストとして認識します。
+
+#### 何をテストするべきか
+テスト方針はプロジェクト状況次第ですが、以下のようなテスト方針がおすすめです。
+
+`.vue`ファイルは最低限`mount`が成功するかどうかをテスト。`computed`や`methods`も怪しい分岐や凝った処理は可能な限りテスト。
+ビジネスロジックはコンポーネント（`.vue`）に書かず、`.js`ファイルに切り出せないかを検討する。そして`.js`ファイルは`export`している関数を可能な限り網羅。
+
+テストの書きやすさは、`.vue`ファイルの`<template>`部分 < `.vue`ファイルの部分`<script>` < `.js`ファイルという並び。複雑な処理ほどテストしやすい場所に書いておく。
+`<template>`はシンプルに保ってテストを頑張りすぎない。
+
+#### 良くある失敗例
+* シンプルな分岐なのでテスト省略
+* 機能追加で分岐増える
+* 既存テストがないから踏襲してテストなし
+* 機能追加で分岐（ry
+* 機能追（ry*
+* 手を付けてはいけないコードの完成
+
 # 何が入っているか?
 このレポジトリに導入されている主要なライブラリや機能を紹介します。
 
@@ -292,6 +314,10 @@ Vue.js以外を入れたい場合(jQuery, React, Angular等)はお近くのフ�
 
 ## axios
 ajaxしたい時はaxiosを使ってください。くれぐれも`$.ajax`を使いたいという理由だけでjQueryを入れるのはやめましょう。
+
+## jest
+フロントエンド用のテストフレームワークです。
+webpackとは独立した設定環境を持っているため、設定周りで詰まったときはお近くのフロントエンドエンジニアまでお願いします。
 
 # Q&A
 ## jQueryは入れないの?
