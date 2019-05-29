@@ -12,7 +12,8 @@
     "eslint:fix": "eslint app/bundles/javascripts --ext js,vue --fix",
     "stylelint": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue",
     "stylelint:fix": "stylelint app/bundles/stylesheets/**/*.scss app/bundles/javascripts/components/**/*.vue --fix",
-    "test": "NODE_ENV=test jest --runInBand"
+    "test": "NODE_ENV=test jest --runInBand",
+    "test:watch": "NODE_ENV=test jest --runInBand --watch"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -22,7 +23,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@vue/test-utils": "^1.0.0-beta.29",
     "autoprefixer": "^9.5.1",
