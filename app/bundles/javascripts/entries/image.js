@@ -1,3 +1,6 @@
-// image_bundle_tagを使いたい時はここ画像ファイルをimportしてくだい。
+// image_bundle_tagで画像を使うため一括import
 // <%= image_bundle_tag 'webpack-logo.svg' %>
-import '@image/webpack-logo.svg';
+function allRequire(context) {
+	context.keys().forEach(context);
+}
+allRequire((require).context('@image/', true, /\.*/));
