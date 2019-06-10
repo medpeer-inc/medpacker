@@ -12,5 +12,11 @@ module.exports = {
 		'^@image/(.+)': '<rootDir>/app/bundles/images/$1',
 		'^vue$': 'vue/dist/vue.common.js'
 	},
-	testMatch:  ['<rootDir>/spec/javascripts/**/?(*.)(spec|test).js?(x)']
+	testMatch:  ['<rootDir>/spec/javascripts/**/?(*.)(spec|test).js?(x)'],
+	snapshotSerializers: ['jest-serializer-vue'],
+	collectCoverageFrom: [
+		'<rootDir>/app/bundles/javascript/**/*.vue',
+		'<rootDir>/app/bundles/javascript/**/*.js',
+		'<rootDir>/app/bundles/javascript/**/*.ts'
+	],
 };
