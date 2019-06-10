@@ -32,3 +32,5 @@
 
 /public/bundles
 /vendor/bundle
+
+coverage
