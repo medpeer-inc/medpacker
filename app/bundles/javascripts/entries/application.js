@@ -3,4 +3,4 @@ import '@style/entries/application.scss';
 // import "rails-ujs";
 
 // なぜかaxiosでPromiseがundefinedになる現象が起こる。axios実行前にPromiseを呼び出すとなぜか回避できるのでやっておく
-Promise
+Promise;
