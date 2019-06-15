@@ -5,7 +5,6 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const TARGET_BROWSERS = require('./browsers');
 
 const bundles = path.join(
 	__dirname,
@@ -77,8 +76,7 @@ module.exports = {
 							plugins: [
 								require('autoprefixer')(
 									{
-										grid: true,
-										browsers: TARGET_BROWSERS
+										grid: true
 									}
 								),
 								require('postcss-flexbugs-fixes')

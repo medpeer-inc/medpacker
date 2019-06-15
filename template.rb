@@ -32,7 +32,7 @@ copy_file '.stylelintrc.json'
 copy_file '.babelrc.js'
 copy_file '.eslintignore'
 copy_file '.eslintrc.json'
-copy_file 'browsers.js'
+copy_file '.browserslistrc'
 copy_file 'jest.config.js'
 
 FileUtils.cp_r("#{File.expand_path(File.dirname(__FILE__))}/app/bundles", 'app/bundles')
