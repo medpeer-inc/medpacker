@@ -2,5 +2,8 @@
   "plugins": [
     "stylelint-scss"
   ],
-  "extends": "stylelint-config-recommended-scss"
+  "extends": "stylelint-config-recommended-scss",
+  "rules": {
+    "scss/selector-no-union-class-name": true
+  }
 }
