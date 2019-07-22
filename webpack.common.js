@@ -55,9 +55,17 @@ module.exports = {
 				loader: 'vue-loader'
 			},
 			{
-				test: /\.js$/,
+				test: /\.(ts|js)$/,
 				exclude: /node_modules/,
-				use: [{ loader: 'babel-loader' }]
+				use: [
+					{ loader: 'babel-loader' },
+					{ loader: 'ts-loader',
+						options: {
+							appendTsSuffixTo: [/\.vue$/],
+							onlyCompileBundledFiles: true
+						}
+				  }
+				]
 			},
 			{
 				test: /\.scss$/,
@@ -130,7 +138,8 @@ module.exports = {
 		},
 		extensions: [
 			'.js',
-			'.vue'
+			'.vue',
+			'.ts'
 		]
 	},
 	performance: {

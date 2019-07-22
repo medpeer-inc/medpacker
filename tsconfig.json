@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2018", "dom"],
+    "module": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es5",
+    "strict": true,
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "allowJs": true,
+    "alwaysStrict": true,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedParameters": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@js/*": ["app/bundles/javascripts/*"],
+      "@spec/*": ["spec/javascripts/*"]
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "app/bundles/javascripts/**/*.ts",
+    "app/bundles/javascripts/**/*.js",
+    "app/bundles/javascripts/components/**/*.vue",
+    "spec/javascripts/**/*.js",
+    "spec/javascripts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "vendor",
+    "public"
+  ],
+  "compileOnSave": false
+}
