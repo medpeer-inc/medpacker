@@ -137,7 +137,8 @@ module.exports = {
 		},
 		extensions: [
 			'.js',
-			'.vue'
+			'.vue',
+			'.ts'
 		]
 	},
 	performance: {
