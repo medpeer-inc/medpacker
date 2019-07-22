@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Target from '@js/components/HelloMedbear';
+import Target from '@js/components/HelloMedbear.vue';
 
 describe('@js/components/HelloMedbear', () => {
 	it('is a Vue instance', () => {
