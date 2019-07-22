@@ -61,7 +61,8 @@ module.exports = {
 					{ loader: 'babel-loader' },
 					{ loader: 'ts-loader',
 						options: {
-							appendTsSuffixTo: [/\.vue$/]
+							appendTsSuffixTo: [/\.vue$/],
+							onlyCompileBundledFiles: true
 						}
 				  }
 				]
