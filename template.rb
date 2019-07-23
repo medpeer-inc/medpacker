@@ -34,6 +34,7 @@ copy_file '.eslintignore'
 copy_file '.eslintrc.json'
 copy_file '.browserslistrc'
 copy_file 'jest.config.js'
+copy_file 'tsconfig.json'
 
 FileUtils.cp_r("#{File.expand_path(File.dirname(__FILE__))}/app/bundles", 'app/bundles')
 
@@ -47,8 +48,8 @@ copy_file 'spec/rails_helper.rb'
 copy_file 'spec/spec_helper.rb'
 copy_file 'spec/supports/capybara.rb'
 copy_file 'spec/supports/webpack.rb'
-copy_file 'spec/javascripts/components/HelloMedbear.spec.js'
-copy_file 'spec/javascripts/components/__snapshots__/HelloMedbear.spec.js.snap'
+copy_file 'spec/javascripts/components/HelloMedbear.spec.ts'
+copy_file 'spec/javascripts/components/__snapshots__/HelloMedbear.spec.ts.snap'
 copy_file 'webpack.common.js'
 copy_file 'webpack.dev.js'
 copy_file 'webpack.prod.js'
