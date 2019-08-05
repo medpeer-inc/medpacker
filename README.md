@@ -78,8 +78,8 @@ server {
 ```
 https://github.com/medpeer-inc/medpacker/blob/master/app/views/layouts/application.html.erb
 https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb
-https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js
-https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/home/index.js
+https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts
+https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/home/index.ts
 https://github.com/medpeer-inc/medpacker/blob/master/package.json
 ```
 
@@ -115,13 +115,15 @@ app/
         └ ...
       └ store/       # Vue.jsのstoreを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
         └ ...
+      └ types/       # TypeScriptの型定義ファイルを置く場所。
+        └ ...
 ```
-#### application.js
-[application.js](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。
+#### application.ts
+[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。
 
 #### エントリーポイントのjs
 各ページ毎に読み込むjsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
-例えば、`app/bundles/javascripts/entries/home/index.js`は以下のようにして読み込むことができます。
+例えば、`app/bundles/javascripts/entries/home/index.ts`は以下のようにして読み込むことができます。
 ```
 # app/views/home/index.html.erb
 
@@ -211,9 +213,9 @@ Railsに依存しないフロントエンドのユニットテスト環境をjes
 テスト方針はプロジェクト状況次第ですが、以下のようなテスト方針がおすすめです。
 
 `.vue`ファイルは最低限`mount`が成功するかどうかをテスト。`computed`や`methods`も怪しい分岐や凝った処理は可能な限りテスト。
-ビジネスロジックはコンポーネント（`.vue`）に書かず、`.js`ファイルに切り出せないかを検討する。そして`.js`ファイルは`export`している関数を可能な限り網羅。
+ビジネスロジックはコンポーネント（`.vue`）に書かず、`.js`ファイルに切り出せないかを検討する。そして`.ts`ファイルは`export`している関数を可能な限り網羅。
 
-テストの書きやすさは、`.vue`ファイルの`<template>`部分 < `.vue`ファイルの部分`<script>` < `.js`ファイルという並び。複雑な処理ほどテストしやすい場所に書いておく。
+テストの書きやすさは、`.vue`ファイルの`<template>`部分 < `.vue`ファイルの部分`<script>` < `.ts`ファイルという並び。複雑な処理ほどテストしやすい場所に書いておく。
 `<template>`はシンプルに保ってテストを頑張りすぎない。
 
 #### 良くある失敗例
@@ -306,6 +308,10 @@ postcssとはcssに対して何かしらの処理を付与するためのツー�
 ### postcss-flexbugs-fixes
 IE11のflexboxのバグを考慮したcssを出力してくれるツール。
 なので、cssでflexboxを書く時はIE11のバグを気にせず書いても大丈夫です。
+
+## TypeScript
+デフォルトでの導入迷っていましたが、社内でsorbetが導入され始めたのをみて便乗して入れました。
+型は強めに設定してます。緩めて欲しかったら社内のフロントエンドエンジニアに相談してください。
 
 ## Vue.js
 デフォルトで入れておきました。
