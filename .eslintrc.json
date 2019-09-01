@@ -14,7 +14,8 @@
     "parserOptions": {
         "parser": "@typescript-eslint/parser",
         "sourceType": "module",
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "extraFileExtensions": [".vue"]
     },
     "rules": {
         "indent": [
@@ -32,6 +33,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "@typescript-eslint/no-explicit-any": 0
     }
 }
