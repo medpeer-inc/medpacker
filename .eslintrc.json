@@ -1,39 +1,39 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "jest/globals": true
-    },
-    "extends": ["eslint:recommended", "plugin:vue/recommended", "plugin:@typescript-eslint/recommended"],
-    "plugins": [
-        "@typescript-eslint",
-        "vue",
-        "jest"
-    ],
-    "parser": "vue-eslint-parser",
-    "parserOptions": {
-        "parser": "@typescript-eslint/parser",
-        "sourceType": "module",
-        "project": "./tsconfig.json",
-        "extraFileExtensions": [".vue"]
-    },
-    "rules": {
-        "indent": [
-            2,
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "@typescript-eslint/no-explicit-any": 0
-    }
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier",
+    "prettier/vue"
+  ],
+  "plugins": ["prettier", "@typescript-eslint", "vue", "jest"],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "warnOnUnsupportedTypeScriptVersion": false,
+    "extraFileExtensions": [".vue"]
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-var-requires": 0,
+    "jest/consistent-test-it": [
+      "error",
+      {
+        "fn": "it",
+        "withinDescribe": "it"
+      }
+    ]
+  }
 }

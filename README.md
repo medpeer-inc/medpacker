@@ -293,6 +293,10 @@ jsとcssのlintを設定しています。
 `app/bundles/javascripts`配下のjs及び単一ファイルコンポーネントファイル(.vue)をlint対象にしています。
 `yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
 
+### prettier
+prettierによってフロントエンドアセットを自動整形しています。
+eslintプラグインとして動作します。
+
 ### stylelint
 `app/bundles/stylesheets`及び`app/bundles/javascripts/components`配下のscss(Vue.jsの単一ファイルコンポーネント内部のscssを含む)をlint対象にしています。
 `yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
