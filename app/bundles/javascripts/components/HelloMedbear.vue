@@ -12,7 +12,7 @@ export default Vue.extend({});
 .hello-medbear {
   width: 400px;
   height: 400px;
-  background-image: url("~@image/medbear.png");
+  background-image: url('~@image/medbear.png');
   background-repeat: no-repeat;
 }
 </style>

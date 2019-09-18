@@ -85,9 +85,11 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: yarn test
+          name: yarn test & lint
           command: |
             yarn install
+            yarn eslint
+            yarn stylelint
             yarn test --coverage
 
   yarn_upgrade:

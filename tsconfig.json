@@ -28,9 +28,7 @@
       "@js/*": ["app/bundles/javascripts/*"],
       "@spec/*": ["spec/javascripts/*"]
     },
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "typeRoots": ["node_modules/@types"]
   },
   "include": [
     "app/bundles/javascripts/**/*.ts",
@@ -39,10 +37,6 @@
     "spec/javascripts/**/*.js",
     "spec/javascripts/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "vendor",
-    "public"
-  ],
+  "exclude": ["node_modules", "vendor", "public"],
   "compileOnSave": false
 }
