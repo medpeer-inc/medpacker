@@ -97,15 +97,15 @@ $ yarn run stylelint:fix  # cssのlint自動修正モード
 $ yarn run test           # jestによるユニットテスト
 ```
 
-### jsの読み込み
+### tsの読み込み
 #### ディレクトリ構成
 ```
 app/
   └ bundles/
     └ javascripts/
-      ├ entries/     # エントリーポイントとなるjsを置く場所
+      ├ entries/     # エントリーポイントとなるtsを置く場所
         └ ...
-      ├ modules/     # 機能毎に分割されたjsを置く場所
+      ├ modules/     # 機能毎に分割されたtsを置く場所
         └ ...
       ├ components/  # Vue.jsのコンポーネントを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
         └ ...
@@ -119,10 +119,10 @@ app/
         └ ...
 ```
 #### application.ts
-[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js)は全ページ共通で使用するjsを書く場所です。デフォルトで読み込んであります。
+[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts)は全ページ共通で使用するtsを書く場所です。デフォルトで読み込んであります。
 
-#### エントリーポイントのjs
-各ページ毎に読み込むjsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
+#### エントリーポイントのts
+各ページ毎に読み込むtsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
 例えば、`app/bundles/javascripts/entries/home/index.ts`は以下のようにして読み込むことができます。
 ```
 # app/views/home/index.html.erb
@@ -137,7 +137,7 @@ app/
 ```
 ここで注意して欲しいのが、必ず`content_for :bundel_js`を使用してほしい点です。
 これによるアセットの設定先はheadタグの最後になります。
-もしこれを用いない場合、上手くjsが動作しない・画面の描画が遅くなると言った不具合が生じます。
+もしこれを用いない場合、上手くtsが動作しない・画面の描画が遅くなると言った不具合が生じます。
 
 ### cssの読み込み
 #### ディレクトリ構成
@@ -161,11 +161,11 @@ app/
 
 
 #### エントリーポイントのcss
-各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、jsのエントリーポイントにてimportしてください。
+各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、tsのエントリーポイントにてimportしてください。
 さらに`stylesheet_bundle_tag`で読み込んでください。
 例えば`app/bundles/stylesheets/entries/home/index.scss`というファイルは以下のように読み込むことができます。
 ```
-# app/bundles/javascripts/entries/home/index.js
+# app/bundles/javascripts/entries/home/index.ts
 import '@style/entries/entries/home/index.scss'
 
 # app/views/home/index.html.erb
@@ -177,19 +177,19 @@ import '@style/entries/entries/home/index.scss'
   ...何かしらのhtml
 </div>
 ```
-jsと同様に、必ず`content_for :bundel_css`を使用してください。
+tsと同様に、必ず`content_for :bundel_css`を使用してください。
 これによるアセットの設定先はheadタグになります。
-繰り返しますが、必ず<b>jsのエントリーポイントにてscssのファイルをimportしてください。</b>
+繰り返しますが、必ず<b>tsのエントリーポイントにてscssのファイルをimportしてください。</b>
 そうしないとwebpackがscssをビルドしてくれず、`stylesheet_bundle_tag`の実行時にcssが読み込まれずエラーが起きます。
 
 ### 画像の読み込み
 もしimageタグで画像を読み込みたい場合は、以下のようにする必要があります(cssのbackground-imageで読み込む場合は以下を実施する必要はありません)。
 
-#### jsファイルに画像ファイルをimport
-`app/bundles/javascripts/entries/image.js`に読み込みたい画像をimportしてください。
+#### tsファイルに画像ファイルをimport
+`app/bundles/javascripts/entries/image.ts`に読み込みたい画像をimportしてください。
 例えば以下のように
 ```
-# app/bundles/javascripts/entries/image.js
+# app/bundles/javascripts/entries/image.ts
 import './webpack-logo.svg';
 ```
 
@@ -197,7 +197,7 @@ import './webpack-logo.svg';
 [こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
 
 ### E2Eテスト(というかfeature spec & system spec)
-デフォルトでは、実行対象のrspec内に`js: true`があれば一度だけwebpackのビルドが走り、それでビルドされたアセットを使用してjsを使用したfeature spec/system specが実行されるようになっています。
+デフォルトでは、実行対象のrspec内に`js: true`があれば一度だけwebpackのビルドが走り、それでビルドされたアセットを使用してtsを使用したfeature spec/system specが実行されるようになっています。
 
 もしrspec実行時にwebpackのビルドを走らせたくなかったら、`SKIP_WEBPACK_BUILD`という環境変数に`true`を渡してあげるとビルドがスキップされるので必要に応じて使ってください。テストを並列で実行させたい時などは事前にwebpackでビルドしておいて、`SKIP_WEBPACK_BUILD=true`でrspec実行時ではビルドしないようにさせた方が効率がいいと思います。
 
@@ -207,13 +207,13 @@ $ SKIP_WEBPACK_BUILD=true bundle exec rspec
 
 ### ユニットテスト
 Railsに依存しないフロントエンドのユニットテスト環境をjestで用意しています。
-`spec/javascripts/`配下に置かれたjsファイル（`**/*.spec.js`）をテストとして認識します。
+`spec/javascripts/`配下に置かれたtsファイル（`**/*.spec.ts`）をテストとして認識します。
 
 #### 何をテストするべきか
 テスト方針はプロジェクト状況次第ですが、以下のようなテスト方針がおすすめです。
 
 `.vue`ファイルは最低限`mount`が成功するかどうかをテスト。`computed`や`methods`も怪しい分岐や凝った処理は可能な限りテスト。
-ビジネスロジックはコンポーネント（`.vue`）に書かず、`.js`ファイルに切り出せないかを検討する。そして`.ts`ファイルは`export`している関数を可能な限り網羅。
+ビジネスロジックはコンポーネント（`.vue`）に書かず、`.ts`ファイルに切り出せないかを検討する。そして`.ts`ファイルは`export`している関数を可能な限り網羅。
 
 テストの書きやすさは、`.vue`ファイルの`<template>`部分 < `.vue`ファイルの部分`<script>` < `.ts`ファイルという並び。複雑な処理ほどテストしやすい場所に書いておく。
 `<template>`はシンプルに保ってテストを頑張りすぎない。
@@ -233,7 +233,7 @@ Railsに依存しないフロントエンドのユニットテスト環境をjes
 このレポジトリのキモです。フロントエンドのアセットをビルドするために使っています。
 
 ### webpack
-js, css, 画像ファイルをビルドします。ビルドしたファイルは`public/bundles`以下に出力します。
+ts, css, 画像ファイルをビルドします。ビルドしたファイルは`public/bundles`以下に出力します。
 webpackでビルドしたファイルは、[このヘルパー](https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb)で定義されているメソッドで読み込むことができます。
 
 ビルドには、developmentモードによるビルドとproductionモードによるビルドの2種類があります。
@@ -261,7 +261,7 @@ developtmentモードと違い、ビルドされたアセットが圧縮され�
 また、通常のwebpackの他にwebpack-dev-serverを導入しています。
 これはwebpackの開発をサポートするツールです。
 例えば...
-- JSを変更した時差分のビルドをしてくれる(webpackのwatchと同じ)
+- TSを変更した時差分のビルドをしてくれる(webpackのwatchと同じ)
 - リロードせずに更新したファイルがブラウザに適用される(Hot module replacement, HMR)
 - 上記のHMRができない場合は自動的にブラウザをリロードし、更新分のアセットを取得する
 
@@ -287,10 +287,10 @@ https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30
 - https://browserl.ist
 
 ## lint系
-jsとcssのlintを設定しています。
+tsとcssのlintを設定しています。
 
 ### eslint
-`app/bundles/javascripts`配下のjs及び単一ファイルコンポーネントファイル(.vue)をlint対象にしています。
+`app/bundles/javascripts`配下のts及び単一ファイルコンポーネントファイル(.vue)をlint対象にしています。
 `yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
 
 ### prettier
@@ -348,7 +348,7 @@ webpackが昔のバージョンのままだと、依存関係がめんどくさ�
 ## remote: trueでajaxが動かないんだけど...
 以下をコメントアウトしてください。
 <br />
-https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.js#L3
+https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts#L3
 
 # 注意点
 - npmコマンドでパッケージを追加しないでください。yarnでやってください。
