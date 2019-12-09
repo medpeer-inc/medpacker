@@ -17,7 +17,7 @@ Read below sections before you introduce your project.
 # How to apply
 There are 3 ways to introduce your project.
 
-## 1: using application template
+## 1: Using application template
 **Recommended way**
 
 First, clone this repo.
@@ -35,27 +35,26 @@ $ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 
 Follow the instructions of cli.
 
-## 手段2: このレポジトリを複製する
-楽な方法ですが、まだrails newしていない段階からしか使えません。cloneしてからremoteの向き先変えてpushしてください。
-<br /><br />
-<b>注) Railsや依存gemのバージョンが古すぎないか確認してください(一応定期的にgemやnpmのバージョンは上げていくつもりです)。</b>
-→ 月に1回npmパッケージとgemのバージョンあげてます。
+## 2: Clone this repo
+Simple way but you have to be just before rails new.
+Clone and push to your remote repo changing initial remote setting.
 
-## 手段3: 手動で移植する
-[この差分](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
+## 3: Imigrate manually
+Imigrate [this codes](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master) manually.
+I guess you finish within 30 minites.
 
 # webpack-dev-server setting under ssl(https)
-おそらくほとんどのプロジェクトでオレオレ証明書を用いたエセSSL環境下で開発環境を構築すると思います。
-その場合、初期状態ではwebpack-dev-serverは動きません。以下の方法で対応する必要があります。
+Almost all MedPeer projects use self-signed certifications for development environment.
+In this case, webpack-dev-server doesn't work so you have to deal with it.
 
-## webpack-dev-serverのpublicオプションの設定
-以下のオプションに、開発環境下のドメインを設定してください。
+## Setting webpack-dev-server public option
+Set dev environment domain to below option.
 <br />
-ex) ドメインがhoge.testなら、hoge.testと設定してください。
+ex) set `foo.test` when environment domain is `foo.test`
 
 https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L9
 
-## nginxでhttpsのリクエストをプロキシする
+## Proxy https request throngh nginx
 ```
 server {
   listen 443 ssl;
@@ -74,12 +73,12 @@ server {
 }
 ```
 
-ここまでできたら、webpack-dev-serverが正常に動くか確認してみてください。
-正常に動かなかったらお近くのフロントエンドエンジニアに聞いてみてください。
+After you finish above steps, confirm whether webpack-dev-server works or not.
+If that doesn't work, ask MedPeer frontend engineers.
 
 # How to use
-## ざっくり編
-ざっくりした使い方は以下ファイルを見て貰えるとざっくりわかると思います。
+## Overall
+Below codes help you understand how to implement and build.
 ```
 https://github.com/medpeer-inc/medpacker/blob/master/app/views/layouts/application.html.erb
 https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb
@@ -88,43 +87,44 @@ https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/ent
 https://github.com/medpeer-inc/medpacker/blob/master/package.json
 ```
 
-## 詳細編
+## Detail
 ### npm scripts
 ```
-$ yarn run dev            # webpackのdevelopmentモードでビルドします
-$ yarn run dev:watch      # webpackのdevelopmentモードでビルドします(watchビルド)
-$ yarn run dev:server     # webpack-dev-serverを起動します。オートリロードやHMRが効くようになります
-$ yarn run build          # webpackのproductionモードでビルドします
+$ yarn run dev            # build assets by webpack as dev mode
+$ yarn run dev:watch      # build assets by webpack as dev mode(watch build)
+$ yarn run dev:server     # start webpack-dev-server
+$ yarn run build          # build assets by webpack as production mode
 $ yarn run eslint         # eslint
-$ yarn run eslint:fix     # eslint自動修正モード
-$ yarn run stylelint      # cssのlint
-$ yarn run stylelint:fix  # cssのlint自動修正モード
-$ yarn run test           # jestによるユニットテスト
+$ yarn run eslint:fix     # eslint with auto fix
+$ yarn run stylelint      # lint css
+$ yarn run stylelint:fix  # lint css with auto fix
+$ yarn run test           # unit test by jest
 ```
 
-### tsの読み込み
-#### ディレクトリ構成
+### TypeScript(Javascript)
+#### Directory structure
 ```
 app/
   └ bundles/
     └ javascripts/
-      ├ entries/     # エントリーポイントとなるtsを置く場所
+      ├ entries/     # Put entry point files.
         └ ...
-      ├ modules/     # 機能毎に分割されたtsを置く場所
+      ├ modules/     # Put ts(js) modules.
         └ ...
-      ├ components/  # Vue.jsのコンポーネントを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      ├ components/  # Put Vue.js components. Delete this dir when you don't use Vue.js.
         └ ...
-      ├ plugins/     # Vue.jsのプラグインを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      ├ plugins/     # Put Vue.js plugins. Delete this dir when you don't use Vue.js.
         └ ...
-      ├ directives/  # Vue.jsのカスタムディレクティブを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      ├ directives/  # Put Vue.js custom directives. Delete this dir when you don't use Vue.js.
         └ ...
-      └ store/       # Vue.jsのstoreを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      └ store/       # Put vuex stores. Delete this dir when you don't use vuex.
         └ ...
-      └ types/       # TypeScriptの型定義ファイルを置く場所。
+      └ types/       # Put TypeScript type definition files.
         └ ...
 ```
+
 #### application.ts
-[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts)は全ページ共通で使用するtsを書く場所です。デフォルトで読み込んであります。
+[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts) is the file which you should write common scripts across all pages.
 
 #### エントリーポイントのts
 各ページ毎に読み込むtsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
