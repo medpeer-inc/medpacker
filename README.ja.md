@@ -1,39 +1,33 @@
-Japanese [README.md](https://github.com/medpeer-inc/README.ja.md)
-
-# Index
-- [About](https://github.com/medpeer-inc/medpacker#About)
-- [How to apply](https://github.com/medpeer-inc/medpacker#How to apply)
-- [webpack-dev-server setting under ssl(https)](https://github.com/medpeer-inc/medpacker#webpack-dev-server setting under ssl(https))
-- [How to use](https://github.com/medpeer-inc/medpacker#How to use)
-- [Contents](https://github.com/medpeer-inc/medpacker#Contents)
+# 目次
+- [これは何か?](https://github.com/medpeer-inc/medpacker#これは何か)
+- [どうやって適用すればいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
+- [SSL(HTTPS)環境下でのwebpack-dev-server設定](https://github.com/medpeer-inc/medpacker#sslhttps%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E3%81%AEwebpack-dev-server%E8%A8%AD%E5%AE%9A)
+- [どうやって使えばいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
+- [何が入っているのか?](https://github.com/medpeer-inc/medpacker#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
 - [Q&A](https://github.com/medpeer-inc/medpacker#qa)
-- [Caution](https://github.com/medpeer-inc/medpacker#Caution)
+- [注意点](https://github.com/medpeer-inc/medpacker#%E6%B3%A8%E6%84%8F%E7%82%B9)
 
-# About
-This is the template repo combined Ruby on Rails with webpack without webpacker.
-This includes libraries which will be needed by MedPeer projects.
-Read below sections before you introduce your project.
+# これは何か?
+Railsとwebpackを統合したテンプレートです(not webpacker)。
+メドピアのフロントエンド開発で最低限必要になる(と思われる)ものを入れてあります。
+各部署・プロジェクトのrailsレポジトリに適用する場合は以下を参考にしてください。
 
-# How to apply
-There are 3 ways to introduce your project.
-
-## 1: using application template
-**Recommended way**
-
-First, clone this repo.
+# どうやって適用すればいいのか?
+## 手段1: アプリケーションテンプレートを使用する
+推奨方法です。
+まずこのレポジトリをローカルにcloneしてください。
 ```
 $ mkdir tmp
 $ cd tmp
 $ git clone https://github.com/medpeer-inc/medpacker.git
 ```
 
-Next, move your project directory and exec below command.
+次に適用対象のレポジトリに移動し、アプリケーションテンプレートのコマンドを打ってください。
 ```
 $ cd path/to/target-repo
 $ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 ```
-
-Follow the instructions of cli.
+あとはCLIの指示に従ってください。
 
 ## 手段2: このレポジトリを複製する
 楽な方法ですが、まだrails newしていない段階からしか使えません。cloneしてからremoteの向き先変えてpushしてください。
@@ -44,7 +38,7 @@ Follow the instructions of cli.
 ## 手段3: 手動で移植する
 [この差分](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
 
-# webpack-dev-server setting under ssl(https)
+# SSL(HTTPS)環境下でのwebpack-dev-server設定
 おそらくほとんどのプロジェクトでオレオレ証明書を用いたエセSSL環境下で開発環境を構築すると思います。
 その場合、初期状態ではwebpack-dev-serverは動きません。以下の方法で対応する必要があります。
 
@@ -77,7 +71,7 @@ server {
 ここまでできたら、webpack-dev-serverが正常に動くか確認してみてください。
 正常に動かなかったらお近くのフロントエンドエンジニアに聞いてみてください。
 
-# How to use
+# どうやって使えばいいのか?
 ## ざっくり編
 ざっくりした使い方は以下ファイルを見て貰えるとざっくりわかると思います。
 ```
@@ -231,7 +225,7 @@ Railsに依存しないフロントエンドのユニットテスト環境をjes
 * 機能追（ry*
 * 手を付けてはいけないコードの完成
 
-# Contents
+# 何が入っているか?
 このレポジトリに導入されている主要なライブラリや機能を紹介します。
 
 ## webpack/webpack-dev-server
@@ -355,7 +349,7 @@ webpackが昔のバージョンのままだと、依存関係がめんどくさ�
 <br />
 https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts#L3
 
-# Caution
+# 注意点
 - npmコマンドでパッケージを追加しないでください。yarnでやってください。
 
 # LICENSE
