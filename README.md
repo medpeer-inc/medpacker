@@ -126,9 +126,9 @@ app/
 #### application.ts
 [application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts) is the file which you should write common scripts across all pages.
 
-#### エントリーポイントのts
-各ページ毎に読み込むtsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
-例えば、`app/bundles/javascripts/entries/home/index.ts`は以下のようにして読み込むことができます。
+#### entry points
+Use `javascript_bundle_tag` to read entry point TypeScript(JavaScript) file which should be put under `app/bundles/javascripts/entries` to each page.
+For instance, you can apply `app/bundles/javascripts/entries/home/index.ts` like this...
 ```
 # app/views/home/index.html.erb
 
@@ -137,38 +137,36 @@ app/
 <% end %>
 
 <div class="container">
-  ...何かしらのhtml
+  ...
 </div>
 ```
-ここで注意して欲しいのが、必ず`content_for :bundel_js`を使用してほしい点です。
-これによるアセットの設定先はheadタグの最後になります。
-もしこれを用いない場合、上手くtsが動作しない・画面の描画が遅くなると言った不具合が生じます。
+Don't forget to use `content_for :bundel_js`.
+This makes entry point TS(JS) putting inside head tag.
+If you don't use this, your JS would't work or get delay to render page.
 
-### cssの読み込み
-#### ディレクトリ構成
+### CSS(SCSS)
+#### Directory structure
 ```
 app/
   └ bundles/
     └ stylesheets/
-      valiables.scss # 変数を置く
-      ├ entries/     # エントリーポイントで読み込むscssを置く場所
+      valiables.scss # Put SCSS variables
+      ├ entries/     # Put SCSS to read each page(including application.scss).
         └ ...
-      ├ components/  # scssのコンポーネントを置く
+      ├ components/  # Put SCSS components
         └ ...
-      └ mixin/       # scssのミックスインを置く
+      └ mixin/       # Put SCSS mixins
         └ ...
 ```
-
-プロジェクト毎に適宜ディレクトリ切ってください。
+Make new directories if needed.
 
 #### application.scss
-[application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss)は全ページ共通で使用するcssを書く場所です。デフォルトで読み込んであります。
-
+[application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss) is the file which you should write common SCSS across all pages.
 
 #### エントリーポイントのcss
-各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、tsのエントリーポイントにてimportしてください。
-さらに`stylesheet_bundle_tag`で読み込んでください。
-例えば`app/bundles/stylesheets/entries/home/index.scss`というファイルは以下のように読み込むことができます。
+Put SCSS files to import each pages under `app/bundles/stylesheets/entries` and import themselfs to TS entry point.
+Finaly, use `stylesheet_bundle_tag` to apply your SCSS file.
+For instance, you can apply `app/bundles/stylesheets/entries/home/index.scss` like this...
 ```
 # app/bundles/javascripts/entries/home/index.ts
 import '@style/entries/entries/home/index.scss'
@@ -182,37 +180,29 @@ import '@style/entries/entries/home/index.scss'
   ...何かしらのhtml
 </div>
 ```
-tsと同様に、必ず`content_for :bundel_css`を使用してください。
-これによるアセットの設定先はheadタグになります。
-繰り返しますが、必ず<b>tsのエントリーポイントにてscssのファイルをimportしてください。</b>
-そうしないとwebpackがscssをビルドしてくれず、`stylesheet_bundle_tag`の実行時にcssが読み込まれずエラーが起きます。
+Use `content_for :bundel_css` same as TS import.
+This makes the stylesheet putting inside head tag.
+<b>import SCSS file to TS entry point once again.</b>
+Otherwise, webpack doesn't build SCSS file and occur the error when `stylesheet_bundle_tag` evaluate.
 
-### 画像の読み込み
-もしimageタグで画像を読み込みたい場合は、以下のようにする必要があります(cssのbackground-imageで読み込む場合は以下を実施する必要はありません)。
+### Image
+Follow the below instruction when you import images to your application(you don't need them when you use images for css background-image).
 
-#### tsファイルに画像ファイルをimport
-`app/bundles/javascripts/entries/image.ts`に読み込みたい画像をimportしてください。
-例えば以下のように
-```
-# app/bundles/javascripts/entries/image.ts
-import './webpack-logo.svg';
-```
+#### Use image_bundle_tag
+You can render image tag [like this](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19) using `image_bundle_tag`.
 
-#### image_bundle_tagを使って、erbファイルに画像を埋め込む
-[こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
-
-### E2Eテスト(というかfeature spec & system spec)
-デフォルトでは、実行対象のrspec内に`js: true`があれば一度だけwebpackのビルドが走り、それでビルドされたアセットを使用してtsを使用したfeature spec/system specが実行されるようになっています。
-
-もしrspec実行時にwebpackのビルドを走らせたくなかったら、`SKIP_WEBPACK_BUILD`という環境変数に`true`を渡してあげるとビルドがスキップされるので必要に応じて使ってください。テストを並列で実行させたい時などは事前にwebpackでビルドしておいて、`SKIP_WEBPACK_BUILD=true`でrspec実行時ではビルドしないようにさせた方が効率がいいと思います。
+### E2E test (feature spec & system spec)
+Medpacker executes webpack build as default when it inspects `js: true` before driving e2e specs.
+You can skip it by setting `SKIP_WEBPACK_BUILD=true` when you don't want to execute webpack build before e2e.
+You should build asset by webpack in advance when you excute e2e test in parallel.
 
 ```
 $ SKIP_WEBPACK_BUILD=true bundle exec rspec
 ```
 
-### ユニットテスト
-Railsに依存しないフロントエンドのユニットテスト環境をjestで用意しています。
-`spec/javascripts/`配下に置かれたtsファイル（`**/*.spec.ts`）をテストとして認識します。
+### Unit test
+Medpacker prepares unit test enviroment by jest(this doesn't depends on Ruby on Rails).
+Jest recognizes TS files like `**/*.spec.ts` as test files which are put under `spec/javascripts/` dir.
 
 #### 何をテストするべきか
 テスト方針はプロジェクト状況次第ですが、以下のようなテスト方針がおすすめです。
