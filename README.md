@@ -177,7 +177,7 @@ import '@style/entries/entries/home/index.scss'
 <% end %>
 
 <div class="container">
-  ...何かしらのhtml
+  ...
 </div>
 ```
 Use `content_for :bundel_css` same as TS import.
@@ -204,53 +204,58 @@ $ SKIP_WEBPACK_BUILD=true bundle exec rspec
 Medpacker prepares unit test enviroment by jest(this doesn't depends on Ruby on Rails).
 Jest recognizes TS files like `**/*.spec.ts` as test files which are put under `spec/javascripts/` dir.
 
-#### 何をテストするべきか
-テスト方針はプロジェクト状況次第ですが、以下のようなテスト方針がおすすめです。
+#### What should you test?
+Test policy depends on each project but we recommend below policy.
 
-`.vue`ファイルは最低限`mount`が成功するかどうかをテスト。`computed`や`methods`も怪しい分岐や凝った処理は可能な限りテスト。
-ビジネスロジックはコンポーネント（`.vue`）に書かず、`.ts`ファイルに切り出せないかを検討する。そして`.ts`ファイルは`export`している関数を可能な限り網羅。
+- Test mounting for Vue.js component at least.
+- Test coplicated methods and computed as much as you can.
+- Think about separating business logics from components to pure functions and test their functions.
 
-テストの書きやすさは、`.vue`ファイルの`<template>`部分 < `.vue`ファイルの部分`<script>` < `.ts`ファイルという並び。複雑な処理ほどテストしやすい場所に書いておく。
-`<template>`はシンプルに保ってテストを頑張りすぎない。
+We show that how easy you write tests each section.
 
-#### 良くある失敗例
-* シンプルな分岐なのでテスト省略
-* 機能追加で分岐増える
-* 既存テストがないから踏襲してテストなし
-* 機能追加で分岐（ry
-* 機能追（ry*
-* 手を付けてはいけないコードの完成
+SFC `<template>` < SFC `<script>` < pure TS(JS)
+
+Put logics on more testable place and keep simple
+
+#### Common story you often encounter without testing
+1. Skip writing test because of simple condition.
+1. New feature added and it makes the condition more coplicated.
+1. You don't write test due to no test there.
+1. New feature added and it makes the condition more coplicated.
+1. New feature added and it makes the condition more coplicated.
+1. You finaly found out chaos codes...
 
 # Contents
-このレポジトリに導入されている主要なライブラリや機能を紹介します。
+Instroduction of important libraries which this repo has.
 
 ## webpack/webpack-dev-server
-このレポジトリのキモです。フロントエンドのアセットをビルドするために使っています。
+Fundamentals of this repo. webpack and webpack-dev are used by assets build.
 
 ### webpack
-ts, css, 画像ファイルをビルドします。ビルドしたファイルは`public/bundles`以下に出力します。
-webpackでビルドしたファイルは、[このヘルパー](https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb)で定義されているメソッドで読み込むことができます。
+webpack build TS(JS), SCSS(css), images and output files to `public/bundles`.
+Your application can read them by using [this helper methods](https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb).
 
-ビルドには、developmentモードによるビルドとproductionモードによるビルドの2種類があります。
+There are 2 modes for build.
 
-#### developmentモード
-その名の通り、開発時に使用するモードです。
+#### development mode
+This mode is for development environment.
 ```
 $ yarn run dev
 $ yarn run dev:watch
 $ yarn run dev:server
 ```
-上記3つのコマンドはdevelopmentモードになります。
-本モードの特徴としては、ビルドされたアセットが圧縮されない・ソースマップが出力されるなど、開発時のデバッグがやりやすいようになっています。
+Above 3 commands are executed as development mode.
+This mode makes you easy to development and debug.
+ex) not minify assets, output sourcemap.
 
-#### productionモード
-その名の通り、本番環境で使用するアセットをビルドするためのモードになります。
+#### production mode
+This mode is for production environment.
 ```
 $ yarn run build
 ```
-上記のコマンドはproductionモードになります。
-本モードの特徴は、出力されるファイルの大きさを極力小さくするということです。
-developtmentモードと違い、ビルドされたアセットが圧縮される・ソースマップが出力されないなど、デバッグはやりにくいですが、ファイルが小さいためより高速にクライアントがアセット取得できます。
+Above command are executed as production mode.
+This mode makes assets minify as small as possible.
+This mode make you difficult to debug but browsers can get assets faster.
 
 #### webpack-dev-server
 また、通常のwebpackの他にwebpack-dev-serverを導入しています。
