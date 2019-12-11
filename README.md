@@ -163,7 +163,7 @@ Make new directories if needed.
 #### application.scss
 [application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss) is the file which you should write common SCSS across all pages.
 
-#### エントリーポイントのcss
+#### entry points
 Put SCSS files to import each pages under `app/bundles/stylesheets/entries` and import themselfs to TS entry point.
 Finaly, use `stylesheet_bundle_tag` to apply your SCSS file.
 For instance, you can apply `app/bundles/stylesheets/entries/home/index.scss` like this...
@@ -258,36 +258,36 @@ This mode makes assets minify as small as possible.
 This mode make you difficult to debug but browsers can get assets faster.
 
 #### webpack-dev-server
-また、通常のwebpackの他にwebpack-dev-serverを導入しています。
-これはwebpackの開発をサポートするツールです。
-例えば...
-- TSを変更した時差分のビルドをしてくれる(webpackのwatchと同じ)
-- リロードせずに更新したファイルがブラウザに適用される(Hot module replacement, HMR)
-- 上記のHMRができない場合は自動的にブラウザをリロードし、更新分のアセットを取得する
+We have introduced webpack-dev-server.
+This helps you local environment development.
+For example...
+- Build incrementally when you change TS or SCSS (same with webpack watch build)
+- Apply updated files to the browser without browser reload (it is called Hot module replacement, HMR)
+- Auto browser reload in case of not working HMR
 
-という機能が使えます。是非使ってみてください。
+You can get these features by using webpack-dev-server.
 
-ただwebpack-dev-serverですがdocker上で動かす場合、dockerの設定とwebpack-dev-serverの設定(hostやportあたり)を調整する必要がある場合があります。
-webpack-dev-server側は以下のファイルを修正する必要があるかもしれません。
+However, you have to adjust webpack-dev-server settings like host and port when you work that on docker.
+Look at these files and adjust settings.
 ```
 https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L8
 https://github.com/medpeer-inc/medpacker/blob/master/config/dev_server_proxy.rb
 https://github.com/medpeer-inc/medpacker/blob/master/config/environments/development.rb#L64
 ```
 
-## babel系
-jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
-すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
+## babel ecosystem
+Babel transforms your JavaScript codes to be able to work at designated browswer versions.
+We have already prepared this ecosystem so you don't have to mind IE11!.
 
-このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
-https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30
+Target browsers setting is here. We set widely more than medpeer.jp recommended browser versions.
+https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30 # FIXME
 
-もし自分で設定したいよという場合は以下2つのサイトを参考に設定してみてください(やり方がよくわからないという場合はお近くのフロントエンドエンジニアまで)。
+When you set by yourself, refer to below sites.
 - https://github.com/browserslist/browserslist
 - https://browserl.ist
 
-## lint系
-tsとcssのlintを設定しています。
+## linters
+We have already set TS and SCSS linters.
 
 ### eslint
 `app/bundles/javascripts`配下のts及び単一ファイルコンポーネントファイル(.vue)をlint対象にしています。
