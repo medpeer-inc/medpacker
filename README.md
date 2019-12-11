@@ -290,24 +290,25 @@ When you set by yourself, refer to below sites.
 We have already set TS and SCSS linters.
 
 ### eslint
-`app/bundles/javascripts`配下のts及び単一ファイルコンポーネントファイル(.vue)をlint対象にしています。
-`yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
+Default lint targets are TS files and SFC files under `app/bundles/javascripts`.
+You can exec eslint by `yarn run eslint`.
+And you can use auto fix by executing `yarn run eslint:fix`.
 
 ### prettier
-prettierによってフロントエンドアセットを自動整形しています。
-eslintプラグインとして動作します。
+Prettier is the code fomatter for frontend assets.
+This works as eslint plugin.
 
 ### stylelint
-`app/bundles/stylesheets`及び`app/bundles/javascripts/components`配下のscss(Vue.jsの単一ファイルコンポーネント内部のscssを含む)をlint対象にしています。
-`yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
+Default lint targets are SCSS files and SFC files under `app/bundles/stylesheets` and `app/bundles/javascripts/components`.
+You can exec stylelint by `yarn run stylelint`.
+And you can use auto fix by executing `yarn run stlyelint:fix`.
 
 ## postcss
-postcssとはcssに対して何かしらの処理を付与するためのツールです。
-現状では以下2つのpostcssのツール(プラグイン)を入れています。
-デザイナーとマークアップエンジニアが幸せになる系のプラグインを入れてあります。
+postcss is the tool to transform CSS and add something awesome.
+We have set 2 postcss plugins as default and they make frontend engineer happier.
 
 ### autoprefixer
-自動的にベンダープレフィックスを付与してくれる。
+Add vendor prefix automatically.
 
 ### postcss-flexbugs-fixes
 IE11のflexboxのバグを考慮したcssを出力してくれるツール。
