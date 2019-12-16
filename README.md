@@ -311,48 +311,47 @@ We have set 2 postcss plugins as default and they make frontend engineer happier
 Add vendor prefix automatically.
 
 ### postcss-flexbugs-fixes
-IE11のflexboxのバグを考慮したcssを出力してくれるツール。
-なので、cssでflexboxを書く時はIE11のバグを気にせず書いても大丈夫です。
+The tool for outputing fixed flexbox bugs codes.
 
 ## TypeScript
-デフォルトでの導入迷っていましたが、社内でsorbetが導入され始めたのをみて便乗して入れました。
-型は強めに設定してます。緩めて欲しかったら社内のフロントエンドエンジニアに相談してください。
+Default settings are strict.
+Ask your frontend engineers if you want to relieve strict settings.
 
 ## Vue.js
-デフォルトで入れておきました。
-Vue.js以外を入れたい場合(jQuery, React, Angular等)はお近くのフロントエンドエンジニアまで相談してください。
-そもそも「フレームワークいらねーよ」という方はVue.js周りの設定を剥ぎ取った上で、`package.json`からvueを削除してください(やり方がわからなかったらお近くのフロントエンドエンジニアまで)。
+Installed as default.
+Ask your frontend engineers if you want to use other JS frontend frameworks like jQuery, React, Angular etc.. .
+If you don't use Vue.js, remove that and that's ecosystem.
 
 ## axios
-ajaxしたい時はaxiosを使ってください。くれぐれも`$.ajax`を使いたいという理由だけでjQueryを入れるのはやめましょう。
+Use axios. Just axios. Don't use `$.ajax`.
 
 ## jest
-フロントエンド用のテストフレームワークです。
-webpackとは独立した設定環境を持っているため、設定周りで詰まったときはお近くのフロントエンドエンジニアまでお願いします。
+Testing frame work for JavaScript.
+This config is apart from webpack so ask your frontend engineers when you get stuck settings.
 
 # Q&A
-## jQueryは入れないの?
-最近のjsはjQueryがなくても便利にDOM操作できるようになってきているので入れていないです。
-どうしても入れたい場合はお近くのフロントエンドエンジニアまで相談してください。
+## Why not JQuery?
+I haven't installed JQuery due to DOM handling of pure JS enough good.
+Ask your frontend engineers when you think you have to install it.
 
-## assets pipeline使わないの?
-assets pipelineの特性上、全てのjs, cssをそれぞれ1ファイルにまとめます。
-プロジェクトが大きくなると一つにまとめたjs, cssのサイズが膨大になりキャッシュが効いていない状態ではダウンロードに時間がかかってしまいます。
-またjs, cssのビルドもgemと密結合するので、小回りの効いた設定がやりづらいといった問題もあります。
+## Why not assets pipeline?
+assets pipeline outputs a file all JS and CSS.
+The code base of the project bigger, the output file bigger and it takes much time to download without cache.
+Additionaly, assets pipeline uses gem and it makes frontend settings ruined.
 
-そのためassets pipelineは外してあります。
+## How about webpacker?
+webpacker abstracts webpack config which has good points and bad points.
+Developers who focus on Rails get advantages from that due to easy setting.
+However, Frontend engineers sometimes suffer from that abstraction which makes them annoying to set webpack advanced settings.
+So we decided not to install webpacker to handle pure webpack.
 
-## webpackerはどうよ?
-いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました(やっと[4系出そう](https://github.com/rails/webpacker/releases)ですね)。
-webpackが昔のバージョンのままだと、依存関係がめんどくさくなるのでもうwebpacker捨てちまおうという判断です。
-
-## remote: trueでajaxが動かないんだけど...
-以下をコメントアウトしてください。
+## ajax does't work by using remote: true
+comment out below.
 <br />
 https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts#L3
 
 # Caution
-- npmコマンドでパッケージを追加しないでください。yarnでやってください。
+- Don't use npm. Just use yarn.
 
 # LICENSE
 This software is released under the MIT License, see the license file.
