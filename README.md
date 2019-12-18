@@ -2,9 +2,9 @@ Japanese [README.md](https://github.com/medpeer-inc/README.ja.md)
 
 # Index
 - [About](https://github.com/medpeer-inc/medpacker#About)
-- [How to apply](https://github.com/medpeer-inc/medpacker#How to apply)
-- [webpack-dev-server setting under ssl(https)](https://github.com/medpeer-inc/medpacker#webpack-dev-server setting under ssl(https))
-- [How to use](https://github.com/medpeer-inc/medpacker#How to use)
+- [How to apply](https://github.com/medpeer-inc/medpacker#how-to-apply)
+- [webpack-dev-server setting under ssl(https)](https://github.com/medpeer-inc/medpacker#webpack-dev-server-setting-under-sslhttps)
+- [How to use](https://github.com/medpeer-inc/medpacker#how-to-use)
 - [Contents](https://github.com/medpeer-inc/medpacker#Contents)
 - [Q&A](https://github.com/medpeer-inc/medpacker#qa)
 - [Caution](https://github.com/medpeer-inc/medpacker#Caution)
