@@ -1,56 +1,60 @@
-# 目次
-- [これは何か?](https://github.com/medpeer-inc/medpacker#これは何か)
-- [どうやって適用すればいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [SSL(HTTPS)環境下でのwebpack-dev-server設定](https://github.com/medpeer-inc/medpacker#sslhttps%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E3%81%AEwebpack-dev-server%E8%A8%AD%E5%AE%9A)
-- [どうやって使えばいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [何が入っているのか?](https://github.com/medpeer-inc/medpacker#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
+Japanese [README.md](https://github.com/medpeer-inc/README.ja.md)
+
+# Index
+- [About](https://github.com/medpeer-inc/medpacker#About)
+- [How to apply](https://github.com/medpeer-inc/medpacker#How to apply)
+- [webpack-dev-server setting under ssl(https)](https://github.com/medpeer-inc/medpacker#webpack-dev-server setting under ssl(https))
+- [How to use](https://github.com/medpeer-inc/medpacker#How to use)
+- [Contents](https://github.com/medpeer-inc/medpacker#Contents)
 - [Q&A](https://github.com/medpeer-inc/medpacker#qa)
-- [注意点](https://github.com/medpeer-inc/medpacker#%E6%B3%A8%E6%84%8F%E7%82%B9)
-- [参考資料](https://github.com/medpeer-inc/medpacker#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99)
+- [Caution](https://github.com/medpeer-inc/medpacker#Caution)
 
-# これは何か?
-Railsとwebpackを統合したテンプレートです(not webpacker)。
-メドピアのフロントエンド開発で最低限必要になる(と思われる)ものを入れてあります。
-各部署・プロジェクトのrailsレポジトリに適用する場合は以下を参考にしてください。
+# About
+This is the template repo combined Ruby on Rails with webpack without webpacker.
+This includes libraries which will be needed by MedPeer projects.
+Read below sections before you introduce your project.
 
-# どうやって適用すればいいのか?
-## 手段1: アプリケーションテンプレートを使用する
-推奨方法です。
-まずこのレポジトリをローカルにcloneしてください。
+# How to apply
+There are 3 ways to introduce your project.
+
+## 1: Using application template
+**Recommended way**
+
+First, clone this repo.
 ```
 $ mkdir tmp
 $ cd tmp
 $ git clone https://github.com/medpeer-inc/medpacker.git
 ```
 
-次に適用対象のレポジトリに移動し、アプリケーションテンプレートのコマンドを打ってください。
+Next, move your project directory and exec below command.
 ```
 $ cd path/to/target-repo
 $ bin/rails app:template LOCATION=path/to/tmp/medpacker/template.rb
 ```
-あとはCLIの指示に従ってください。
 
-## 手段2: このレポジトリを複製する
-楽な方法ですが、まだrails newしていない段階からしか使えません。cloneしてからremoteの向き先変えてpushしてください。
-<br /><br />
-<b>注) Railsや依存gemのバージョンが古すぎないか確認してください(一応定期的にgemやnpmのバージョンは上げていくつもりです)。</b>
-→ 月に1回npmパッケージとgemのバージョンあげてます。
+Follow the instructions of cli.
 
-## 手段3: 手動で移植する
-[この差分](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master)を人力で移植してください。30分あれば終わると思います。
+## 2: Clone this repo
+Simple way but you have to be just before rails new.
+Clone and push to your remote repo changing initial remote setting.
 
-# SSL(HTTPS)環境下でのwebpack-dev-server設定
-おそらくほとんどのプロジェクトでオレオレ証明書を用いたエセSSL環境下で開発環境を構築すると思います。
-その場合、初期状態ではwebpack-dev-serverは動きません。以下の方法で対応する必要があります。
+## 3: Imigrate manually
+Imigrate [this codes](https://github.com/medpeer-inc/medpacker/compare/fd72d963b1b700031104c78956a61877afb6269f...master) manually.
+I guess you finish within 30 minites.
 
-## webpack-dev-serverのpublicオプションの設定
-以下のオプションに、開発環境下のドメインを設定してください。
+# webpack-dev-server setting under ssl(https)
+Almost all MedPeer projects use self-signed certifications for development environment.
+In this case, webpack-dev-server doesn't work so you have to deal with it.
+
+## Setting webpack-dev-server public option
+Set dev environment domain to below option.
 <br />
-ex) ドメインがhoge.testなら、hoge.testと設定してください。
+ex) set `foo.test` when environment domain is `foo.test`
 
 https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L9
 
-## nginxでhttpsのリクエストをプロキシする
+## Proxy https request throngh nginx
 ```
 server {
   listen 443 ssl;
@@ -69,12 +73,12 @@ server {
 }
 ```
 
-ここまでできたら、webpack-dev-serverが正常に動くか確認してみてください。
-正常に動かなかったらお近くのフロントエンドエンジニアに聞いてみてください。
+After you finish above steps, confirm whether webpack-dev-server works or not.
+If that doesn't work, ask MedPeer frontend engineers.
 
-# どうやって使えばいいのか?
-## ざっくり編
-ざっくりした使い方は以下ファイルを見て貰えるとざっくりわかると思います。
+# How to use
+## Overall
+Below codes help you understand how to implement and build.
 ```
 https://github.com/medpeer-inc/medpacker/blob/master/app/views/layouts/application.html.erb
 https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb
@@ -83,47 +87,48 @@ https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/ent
 https://github.com/medpeer-inc/medpacker/blob/master/package.json
 ```
 
-## 詳細編
+## Detail
 ### npm scripts
 ```
-$ yarn run dev            # webpackのdevelopmentモードでビルドします
-$ yarn run dev:watch      # webpackのdevelopmentモードでビルドします(watchビルド)
-$ yarn run dev:server     # webpack-dev-serverを起動します。オートリロードやHMRが効くようになります
-$ yarn run build          # webpackのproductionモードでビルドします
+$ yarn run dev            # build assets by webpack as dev mode
+$ yarn run dev:watch      # build assets by webpack as dev mode(watch build)
+$ yarn run dev:server     # start webpack-dev-server
+$ yarn run build          # build assets by webpack as production mode
 $ yarn run eslint         # eslint
-$ yarn run eslint:fix     # eslint自動修正モード
-$ yarn run stylelint      # cssのlint
-$ yarn run stylelint:fix  # cssのlint自動修正モード
-$ yarn run test           # jestによるユニットテスト
+$ yarn run eslint:fix     # eslint with auto fix
+$ yarn run stylelint      # lint css
+$ yarn run stylelint:fix  # lint css with auto fix
+$ yarn run test           # unit test by jest
 ```
 
-### tsの読み込み
-#### ディレクトリ構成
+### TypeScript(Javascript)
+#### Directory structure
 ```
 app/
   └ bundles/
     └ javascripts/
-      ├ entries/     # エントリーポイントとなるtsを置く場所
+      ├ entries/     # Put entry point files.
         └ ...
-      ├ modules/     # 機能毎に分割されたtsを置く場所
+      ├ modules/     # Put ts(js) modules.
         └ ...
-      ├ components/  # Vue.jsのコンポーネントを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      ├ components/  # Put Vue.js components. Delete this dir when you don't use Vue.js.
         └ ...
-      ├ plugins/     # Vue.jsのプラグインを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      ├ plugins/     # Put Vue.js plugins. Delete this dir when you don't use Vue.js.
         └ ...
-      ├ directives/  # Vue.jsのカスタムディレクティブを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      ├ directives/  # Put Vue.js custom directives. Delete this dir when you don't use Vue.js.
         └ ...
-      └ store/       # Vue.jsのstoreを置く場所。Vue.jsを使わない場合はディレクトリを削除してください
+      └ store/       # Put vuex stores. Delete this dir when you don't use vuex.
         └ ...
-      └ types/       # TypeScriptの型定義ファイルを置く場所。
+      └ types/       # Put TypeScript type definition files.
         └ ...
 ```
-#### application.ts
-[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts)は全ページ共通で使用するtsを書く場所です。デフォルトで読み込んであります。
 
-#### エントリーポイントのts
-各ページ毎に読み込むtsは`app/bundles/javascripts/entries`下に設置して、`javascript_bundle_tag`で読み込んでください。
-例えば、`app/bundles/javascripts/entries/home/index.ts`は以下のようにして読み込むことができます。
+#### application.ts
+[application.ts](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts) is the file which you should write common scripts across all pages.
+
+#### entry points
+Use `javascript_bundle_tag` to read entry point TypeScript(JavaScript) file which should be put under `app/bundles/javascripts/entries` to each page.
+For instance, you can apply `app/bundles/javascripts/entries/home/index.ts` like this...
 ```
 # app/views/home/index.html.erb
 
@@ -132,38 +137,36 @@ app/
 <% end %>
 
 <div class="container">
-  ...何かしらのhtml
+  ...
 </div>
 ```
-ここで注意して欲しいのが、必ず`content_for :bundel_js`を使用してほしい点です。
-これによるアセットの設定先はheadタグの最後になります。
-もしこれを用いない場合、上手くtsが動作しない・画面の描画が遅くなると言った不具合が生じます。
+Don't forget to use `content_for :bundel_js`.
+This makes entry point TS(JS) putting inside head tag.
+If you don't use this, your JS would't work or get delay to render page.
 
-### cssの読み込み
-#### ディレクトリ構成
+### CSS(SCSS)
+#### Directory structure
 ```
 app/
   └ bundles/
     └ stylesheets/
-      valiables.scss # 変数を置く
-      ├ entries/     # エントリーポイントで読み込むscssを置く場所
+      valiables.scss # Put SCSS variables
+      ├ entries/     # Put SCSS to read each page(including application.scss).
         └ ...
-      ├ components/  # scssのコンポーネントを置く
+      ├ components/  # Put SCSS components
         └ ...
-      └ mixin/       # scssのミックスインを置く
+      └ mixin/       # Put SCSS mixins
         └ ...
 ```
-
-プロジェクト毎に適宜ディレクトリ切ってください。
+Make new directories if needed.
 
 #### application.scss
-[application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss)は全ページ共通で使用するcssを書く場所です。デフォルトで読み込んであります。
+[application.scss](https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/stylesheets/entries/application.scss) is the file which you should write common SCSS across all pages.
 
-
-#### エントリーポイントのcss
-各ページ毎に読み込むcssは`app/bundles/stylesheets/entries`下に配置して、tsのエントリーポイントにてimportしてください。
-さらに`stylesheet_bundle_tag`で読み込んでください。
-例えば`app/bundles/stylesheets/entries/home/index.scss`というファイルは以下のように読み込むことができます。
+#### entry points
+Put SCSS files to import each pages under `app/bundles/stylesheets/entries` and import themselfs to TS entry point.
+Finaly, use `stylesheet_bundle_tag` to apply your SCSS file.
+For instance, you can apply `app/bundles/stylesheets/entries/home/index.scss` like this...
 ```
 # app/bundles/javascripts/entries/home/index.ts
 import '@style/entries/entries/home/index.scss'
@@ -174,184 +177,181 @@ import '@style/entries/entries/home/index.scss'
 <% end %>
 
 <div class="container">
-  ...何かしらのhtml
+  ...
 </div>
 ```
-tsと同様に、必ず`content_for :bundel_css`を使用してください。
-これによるアセットの設定先はheadタグになります。
-繰り返しますが、必ず<b>tsのエントリーポイントにてscssのファイルをimportしてください。</b>
-そうしないとwebpackがscssをビルドしてくれず、`stylesheet_bundle_tag`の実行時にcssが読み込まれずエラーが起きます。
+Use `content_for :bundel_css` same as TS import.
+This makes the stylesheet putting inside head tag.
+<b>import SCSS file to TS entry point once again.</b>
+Otherwise, webpack doesn't build SCSS file and occur the error when `stylesheet_bundle_tag` evaluate.
 
-### 画像の読み込み
-もしimageタグで画像を読み込みたい場合は、以下のようにする必要があります(cssのbackground-imageで読み込む場合は以下を実施する必要はありません)。
+### Image
+Follow the below instruction when you import images to your application(you don't need them when you use images for css background-image).
 
-#### tsファイルに画像ファイルをimport
-`app/bundles/javascripts/entries/image.ts`に読み込みたい画像をimportしてください。
-例えば以下のように
-```
-# app/bundles/javascripts/entries/image.ts
-import './webpack-logo.svg';
-```
+#### Use image_bundle_tag
+You can render image tag [like this](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19) using `image_bundle_tag`.
 
-#### image_bundle_tagを使って、erbファイルに画像を埋め込む
-[こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
-
-### E2Eテスト(というかfeature spec & system spec)
-デフォルトでは、実行対象のrspec内に`js: true`があれば一度だけwebpackのビルドが走り、それでビルドされたアセットを使用してtsを使用したfeature spec/system specが実行されるようになっています。
-
-もしrspec実行時にwebpackのビルドを走らせたくなかったら、`SKIP_WEBPACK_BUILD`という環境変数に`true`を渡してあげるとビルドがスキップされるので必要に応じて使ってください。テストを並列で実行させたい時などは事前にwebpackでビルドしておいて、`SKIP_WEBPACK_BUILD=true`でrspec実行時ではビルドしないようにさせた方が効率がいいと思います。
+### E2E test (feature spec & system spec)
+Medpacker executes webpack build as default when it inspects `js: true` before driving e2e specs.
+You can skip it by setting `SKIP_WEBPACK_BUILD=true` when you don't want to execute webpack build before e2e.
+You should build asset by webpack in advance when you excute e2e test in parallel.
 
 ```
 $ SKIP_WEBPACK_BUILD=true bundle exec rspec
 ```
 
-### ユニットテスト
-Railsに依存しないフロントエンドのユニットテスト環境をjestで用意しています。
-`spec/javascripts/`配下に置かれたtsファイル（`**/*.spec.ts`）をテストとして認識します。
+### Unit test
+Medpacker prepares unit test enviroment by jest(this doesn't depends on Ruby on Rails).
+Jest recognizes TS files like `**/*.spec.ts` as test files which are put under `spec/javascripts/` dir.
 
-#### 何をテストするべきか
-テスト方針はプロジェクト状況次第ですが、以下のようなテスト方針がおすすめです。
+#### What should you test?
+Test policy depends on each project but we recommend below policy.
 
-`.vue`ファイルは最低限`mount`が成功するかどうかをテスト。`computed`や`methods`も怪しい分岐や凝った処理は可能な限りテスト。
-ビジネスロジックはコンポーネント（`.vue`）に書かず、`.ts`ファイルに切り出せないかを検討する。そして`.ts`ファイルは`export`している関数を可能な限り網羅。
+- Test mounting for Vue.js component at least.
+- Test coplicated methods and computed as much as you can.
+- Think about separating business logics from components to pure functions and test their functions.
 
-テストの書きやすさは、`.vue`ファイルの`<template>`部分 < `.vue`ファイルの部分`<script>` < `.ts`ファイルという並び。複雑な処理ほどテストしやすい場所に書いておく。
-`<template>`はシンプルに保ってテストを頑張りすぎない。
+We show that how easy you write tests each section.
 
-#### 良くある失敗例
-* シンプルな分岐なのでテスト省略
-* 機能追加で分岐増える
-* 既存テストがないから踏襲してテストなし
-* 機能追加で分岐（ry
-* 機能追（ry*
-* 手を付けてはいけないコードの完成
+SFC `<template>` < SFC `<script>` < pure TS(JS)
 
-# 何が入っているか?
-このレポジトリに導入されている主要なライブラリや機能を紹介します。
+Put logics on more testable place and keep simple
+
+#### Common story you often encounter without testing
+1. Skip writing test because of simple condition.
+1. New feature added and it makes the condition more coplicated.
+1. You don't write test due to no test there.
+1. New feature added and it makes the condition more coplicated.
+1. New feature added and it makes the condition more coplicated.
+1. You finaly found out chaos codes...
+
+# Contents
+Instroduction of important libraries which this repo has.
 
 ## webpack/webpack-dev-server
-このレポジトリのキモです。フロントエンドのアセットをビルドするために使っています。
+Fundamentals of this repo. webpack and webpack-dev are used by assets build.
 
 ### webpack
-ts, css, 画像ファイルをビルドします。ビルドしたファイルは`public/bundles`以下に出力します。
-webpackでビルドしたファイルは、[このヘルパー](https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb)で定義されているメソッドで読み込むことができます。
+webpack build TS(JS), SCSS(css), images and output files to `public/bundles`.
+Your application can read them by using [this helper methods](https://github.com/medpeer-inc/medpacker/blob/master/app/helpers/webpack_bundle_helper.rb).
 
-ビルドには、developmentモードによるビルドとproductionモードによるビルドの2種類があります。
+There are 2 modes for build.
 
-#### developmentモード
-その名の通り、開発時に使用するモードです。
+#### development mode
+This mode is for development environment.
 ```
 $ yarn run dev
 $ yarn run dev:watch
 $ yarn run dev:server
 ```
-上記3つのコマンドはdevelopmentモードになります。
-本モードの特徴としては、ビルドされたアセットが圧縮されない・ソースマップが出力されるなど、開発時のデバッグがやりやすいようになっています。
+Above 3 commands are executed as development mode.
+This mode makes you easy to development and debug.
+ex) not minify assets, output sourcemap.
 
-#### productionモード
-その名の通り、本番環境で使用するアセットをビルドするためのモードになります。
+#### production mode
+This mode is for production environment.
 ```
 $ yarn run build
 ```
-上記のコマンドはproductionモードになります。
-本モードの特徴は、出力されるファイルの大きさを極力小さくするということです。
-developtmentモードと違い、ビルドされたアセットが圧縮される・ソースマップが出力されないなど、デバッグはやりにくいですが、ファイルが小さいためより高速にクライアントがアセット取得できます。
+Above command are executed as production mode.
+This mode makes assets minify as small as possible.
+This mode make you difficult to debug but browsers can get assets faster.
 
 #### webpack-dev-server
-また、通常のwebpackの他にwebpack-dev-serverを導入しています。
-これはwebpackの開発をサポートするツールです。
-例えば...
-- TSを変更した時差分のビルドをしてくれる(webpackのwatchと同じ)
-- リロードせずに更新したファイルがブラウザに適用される(Hot module replacement, HMR)
-- 上記のHMRができない場合は自動的にブラウザをリロードし、更新分のアセットを取得する
+We have introduced webpack-dev-server.
+This helps you local environment development.
+For example...
+- Build incrementally when you change TS or SCSS (same with webpack watch build)
+- Apply updated files to the browser without browser reload (it is called Hot module replacement, HMR)
+- Auto browser reload in case of not working HMR
 
-という機能が使えます。是非使ってみてください。
+You can get these features by using webpack-dev-server.
 
-ただwebpack-dev-serverですがdocker上で動かす場合、dockerの設定とwebpack-dev-serverの設定(hostやportあたり)を調整する必要がある場合があります。
-webpack-dev-server側は以下のファイルを修正する必要があるかもしれません。
+However, you have to adjust webpack-dev-server settings like host and port when you work that on docker.
+Look at these files and adjust settings.
 ```
 https://github.com/medpeer-inc/medpacker/blob/master/webpack.dev.js#L8
 https://github.com/medpeer-inc/medpacker/blob/master/config/dev_server_proxy.rb
 https://github.com/medpeer-inc/medpacker/blob/master/config/environments/development.rb#L64
 ```
 
-## babel系
-jsを色々なブラウザで読み込めるように(例えば最新の記法が古いブラウザでも読み込めるように)変形/代替してくれるライブラリになります。
-すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
+## babel ecosystem
+Babel transforms your JavaScript codes to be able to work at designated browswer versions.
+We have already prepared this ecosystem so you don't have to mind IE11!.
 
-このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
-https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30
+Target browsers setting is here. We set widely more than medpeer.jp recommended browser versions.
+https://github.com/medpeer-inc/medpacker/blob/master/.browserslistrc
 
-もし自分で設定したいよという場合は以下2つのサイトを参考に設定してみてください(やり方がよくわからないという場合はお近くのフロントエンドエンジニアまで)。
+When you set by yourself, refer to below sites.
 - https://github.com/browserslist/browserslist
 - https://browserl.ist
 
-## lint系
-tsとcssのlintを設定しています。
+## linters
+We have already set TS and SCSS linters.
 
 ### eslint
-`app/bundles/javascripts`配下のts及び単一ファイルコンポーネントファイル(.vue)をlint対象にしています。
-`yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
+Default lint targets are TS files and SFC files under `app/bundles/javascripts`.
+You can exec eslint by `yarn run eslint`.
+And you can use auto fix by executing `yarn run eslint:fix`.
 
 ### prettier
-prettierによってフロントエンドアセットを自動整形しています。
-eslintプラグインとして動作します。
+Prettier is the code fomatter for frontend assets.
+This works as eslint plugin.
 
 ### stylelint
-`app/bundles/stylesheets`及び`app/bundles/javascripts/components`配下のscss(Vue.jsの単一ファイルコンポーネント内部のscssを含む)をlint対象にしています。
-`yarn run eslint`で実行できます。もし自動修正してほしい場合は`yarn run eslint:fix`を実行してください。
+Default lint targets are SCSS files and SFC files under `app/bundles/stylesheets` and `app/bundles/javascripts/components`.
+You can exec stylelint by `yarn run stylelint`.
+And you can use auto fix by executing `yarn run stlyelint:fix`.
 
 ## postcss
-postcssとはcssに対して何かしらの処理を付与するためのツールです。
-現状では以下2つのpostcssのツール(プラグイン)を入れています。
-デザイナーとマークアップエンジニアが幸せになる系のプラグインを入れてあります。
+postcss is the tool to transform CSS and add something awesome.
+We have set 2 postcss plugins as default and they make frontend engineer happier.
 
 ### autoprefixer
-自動的にベンダープレフィックスを付与してくれる。
+Add vendor prefix automatically.
 
 ### postcss-flexbugs-fixes
-IE11のflexboxのバグを考慮したcssを出力してくれるツール。
-なので、cssでflexboxを書く時はIE11のバグを気にせず書いても大丈夫です。
+The tool for outputing fixed flexbox bugs codes.
 
 ## TypeScript
-デフォルトでの導入迷っていましたが、社内でsorbetが導入され始めたのをみて便乗して入れました。
-型は強めに設定してます。緩めて欲しかったら社内のフロントエンドエンジニアに相談してください。
+Default settings are strict.
+Ask your frontend engineers if you want to relieve strict settings.
 
 ## Vue.js
-デフォルトで入れておきました。
-Vue.js以外を入れたい場合(jQuery, React, Angular等)はお近くのフロントエンドエンジニアまで相談してください。
-そもそも「フレームワークいらねーよ」という方はVue.js周りの設定を剥ぎ取った上で、`package.json`からvueを削除してください(やり方がわからなかったらお近くのフロントエンドエンジニアまで)。
+Installed as default.
+Ask your frontend engineers if you want to use other JS frontend frameworks like jQuery, React, Angular etc.. .
+If you don't use Vue.js, remove that and that's ecosystem.
 
 ## axios
-ajaxしたい時はaxiosを使ってください。くれぐれも`$.ajax`を使いたいという理由だけでjQueryを入れるのはやめましょう。
+Use axios. Just axios. Don't use `$.ajax`.
 
 ## jest
-フロントエンド用のテストフレームワークです。
-webpackとは独立した設定環境を持っているため、設定周りで詰まったときはお近くのフロントエンドエンジニアまでお願いします。
+Testing frame work for JavaScript.
+This config is apart from webpack so ask your frontend engineers when you get stuck settings.
 
 # Q&A
-## jQueryは入れないの?
-最近のjsはjQueryがなくても便利にDOM操作できるようになってきているので入れていないです。
-どうしても入れたい場合はお近くのフロントエンドエンジニアまで相談してください。
+## Why not JQuery?
+I haven't installed JQuery due to DOM handling of pure JS enough good.
+Ask your frontend engineers when you think you have to install it.
 
-## assets pipeline使わないの?
-assets pipelineの特性上、全てのjs, cssをそれぞれ1ファイルにまとめます。
-プロジェクトが大きくなると一つにまとめたjs, cssのサイズが膨大になりキャッシュが効いていない状態ではダウンロードに時間がかかってしまいます。
-またjs, cssのビルドもgemと密結合するので、小回りの効いた設定がやりづらいといった問題もあります。
+## Why not assets pipeline?
+assets pipeline outputs a file all JS and CSS.
+The code base of the project bigger, the output file bigger and it takes much time to download without cache.
+Additionaly, assets pipeline uses gem and it makes frontend settings ruined.
 
-そのためassets pipelineは外してあります。
+## How about webpacker?
+webpacker abstracts webpack config which has good points and bad points.
+Developers who focus on Rails get advantages from that due to easy setting.
+However, Frontend engineers sometimes suffer from that abstraction which makes them annoying to set webpack advanced settings.
+So we decided not to install webpacker to handle pure webpack.
 
-## webpackerはどうよ?
-いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました(やっと[4系出そう](https://github.com/rails/webpacker/releases)ですね)。
-webpackが昔のバージョンのままだと、依存関係がめんどくさくなるのでもうwebpacker捨てちまおうという判断です。
-
-## remote: trueでajaxが動かないんだけど...
-以下をコメントアウトしてください。
+## ajax does't work by using remote: true
+comment out below.
 <br />
 https://github.com/medpeer-inc/medpacker/blob/master/app/bundles/javascripts/entries/application.ts#L3
 
-# 注意点
-- npmコマンドでパッケージを追加しないでください。yarnでやってください。
+# Caution
+- Don't use npm. Just use yarn.
 
 # LICENSE
 This software is released under the MIT License, see the license file.
