@@ -1,11 +1,11 @@
 # 目次
-- [これは何か?](https://github.com/medpeer-inc/medpacker#これは何か)
-- [どうやって適用すればいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [SSL(HTTPS)環境下でのwebpack-dev-server設定](https://github.com/medpeer-inc/medpacker#sslhttps%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E3%81%AEwebpack-dev-server%E8%A8%AD%E5%AE%9A)
-- [どうやって使えばいいのか?](https://github.com/medpeer-inc/medpacker#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
-- [何が入っているのか?](https://github.com/medpeer-inc/medpacker#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
-- [Q&A](https://github.com/medpeer-inc/medpacker#qa)
-- [注意点](https://github.com/medpeer-inc/medpacker#%E6%B3%A8%E6%84%8F%E7%82%B9)
+- [これは何か?](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#これは何か)
+- [どうやって適用すればいいのか?](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
+- [SSL(HTTPS)環境下でのwebpack-dev-server設定](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#sslhttps%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E3%81%AEwebpack-dev-server%E8%A8%AD%E5%AE%9A)
+- [どうやって使えばいいのか?](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E4%BD%BF%E3%81%88%E3%81%B0%E3%81%84%E3%81%84%E3%81%AE%E3%81%8B)
+- [何が入っているのか?](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#%E4%BD%95%E3%81%8C%E5%85%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
+- [Q&A](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#qa)
+- [注意点](https://github.com/medpeer-inc/medpacker/blob/master/README.ja.md#%E6%B3%A8%E6%84%8F%E7%82%B9)
 
 # これは何か?
 Railsとwebpackを統合したテンプレートです(not webpacker)。
