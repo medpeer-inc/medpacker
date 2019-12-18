@@ -4,7 +4,7 @@ def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
 
-p 'コンフリクトした場合はオーバーライトしてください。'
+p 'Overwrite files when conflictions happen'
 
 if yes? "remove 'app/assets'?"
   run 'rm -rf app/assets'
@@ -68,8 +68,8 @@ run 'bundle install --path vendor/bundle --jobs=4'
 run 'yarn install'
 run 'yarn run dev'
 
-p '----------以下確認してください----------'
-p '1) コンフリクトしたファイルが出た場合は確認・修正を行ってください。'
-p '2) webpackの使用で不要になるgemがないか確認してください。ex) sass-rails, uglifier, coffee-rails, thrbolinks, jquery-rails'
-p '3) rspec周りの設定やディレクトリ構成が正しいか確認してください。'
+p '---------------Confirm---------------'
+p '1) Confirm and fix files when conflictions happen.'
+p '2) Confirm unused gems due to webpack usage ex) sass-rails, uglifier, coffee-rails, thrbolinks, jquery-rails'
+p '3) Confirm rspec settings and directory structure whether it keeps working.'
 p '-------------------------------------'

@@ -279,7 +279,7 @@ jsを色々なブラウザで読み込めるように(例えば最新の記法�
 すでに設定済みなので、IE11とか気にせずにjsを書いても問題ありません。
 
 このレポジトリのbabel変換における対象ブラウザ設定では、medpeer.jpの推奨環境より多少緩く設定しています。
-https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30
+https://github.com/medpeer-inc/medpacker/blob/master/.browserslistrc
 
 もし自分で設定したいよという場合は以下2つのサイトを参考に設定してみてください(やり方がよくわからないという場合はお近くのフロントエンドエンジニアまで)。
 - https://github.com/browserslist/browserslist

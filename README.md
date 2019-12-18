@@ -280,7 +280,7 @@ Babel transforms your JavaScript codes to be able to work at designated browswer
 We have already prepared this ecosystem so you don't have to mind IE11!.
 
 Target browsers setting is here. We set widely more than medpeer.jp recommended browser versions.
-https://github.com/medpeer-inc/medpacker/blob/master/webpack.common.js#L30 # FIXME
+https://github.com/medpeer-inc/medpacker/blob/master/.browserslistrc
 
 When you set by yourself, refer to below sites.
 - https://github.com/browserslist/browserslist
