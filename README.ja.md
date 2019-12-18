@@ -310,10 +310,8 @@ postcssとはcssに対して何かしらの処理を付与するためのツー�
 
 ### postcss-flexbugs-fixes
 IE11のflexboxのバグを考慮したcssを出力してくれるツール。
-なので、cssでflexboxを書く時はIE11のバグを気にせず書いても大丈夫です。
 
 ## TypeScript
-デフォルトでの導入迷っていましたが、社内でsorbetが導入され始めたのをみて便乗して入れました。
 型は強めに設定してます。緩めて欲しかったら社内のフロントエンドエンジニアに相談してください。
 
 ## Vue.js
@@ -341,8 +339,8 @@ assets pipelineの特性上、全てのjs, cssをそれぞれ1ファイルにま
 そのためassets pipelineは外してあります。
 
 ## webpackerはどうよ?
-いつまでたってもwebpack3系依存が抜けない(つまりwebpackのバージョンアップにwebpackerがついていけていない)のでwebpackerは諦めました(やっと[4系出そう](https://github.com/rails/webpacker/releases)ですね)。
-webpackが昔のバージョンのままだと、依存関係がめんどくさくなるのでもうwebpacker捨てちまおうという判断です。
+webpackを抽象化してくれるgemで、特にwebpackをカスタマイズしない場合は便利でいいのですが、諸々カスタマイズしたくなるとgemで抽象化されてる分「webpacker力」が必要になってきます。
+フロントエンドエンジニアとしては純粋なwebpackのコンフィグファイルの方が設定いじるの楽なので外してあります。
 
 ## remote: trueでajaxが動かないんだけど...
 以下をコメントアウトしてください。
