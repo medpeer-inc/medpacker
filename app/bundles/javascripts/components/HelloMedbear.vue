@@ -2,7 +2,8 @@
   <div>
     <div class="hello-medbear" />
     <img :src="src" alt="Hello Medbear2" />
-    <img src="~@image/medbear.png" alt="Hello Medbear3" />
+    <!-- wired... -->
+    <img :src="require('@image/medbear.png').default" alt="Hello Medbear3" />
   </div>
 </template>
 
