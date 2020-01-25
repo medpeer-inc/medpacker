@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`@js/components/HelloMedbear is a Vue instance 1`] = `
-<div
-  class="hello-medbear"
-/>
+<div>
+  <div
+    class="hello-medbear"
+  />
+   
+  <img
+    alt="Hello Medbear2"
+    src="test.png"
+  />
+   
+  <img
+    alt="Hello Medbear3"
+  />
+</div>
 `;
