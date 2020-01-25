@@ -4,9 +4,10 @@
   "license": "MIT",
   "description": "setup fontend assets in Ruby on Rails for MedPeer, Inc",
   "scripts": {
-    "dev": "webpack --mode=development --progress --config webpack.dev.js",
+    "rm-output-files": "rm -rf public/bundles",
+    "dev": "yarn rm-output-files && webpack --mode=development --progress --config webpack.dev.js",
     "dev:server": "webpack-dev-server --progress --color --hot --config webpack.dev.js",
-    "dev:watch": "webpack --mode=development --progress --watch --config webpack.dev.js",
+    "dev:watch": "yarn rm-output-files && webpack --mode=development --progress --watch --config webpack.dev.js",
     "build": "webpack --mode=production --config webpack.prod.js",
     "eslint": "eslint app/bundles/javascripts spec/javascripts --ext js,ts,vue",
     "eslint:fix": "yarn eslint --fix",
