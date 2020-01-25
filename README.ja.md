@@ -192,6 +192,22 @@ tsと同様に、必ず`content_for :bundel_css`を使用してください。
 import './webpack-logo.svg';
 ```
 
+#### 画像ファイルのパス解決
+##### css
+`url('~@image/medbear.png')`
+
+##### ts
+`import img from '@image/medbear.png';`
+imgは指定された画像のパスがstringで格納されてます。
+
+##### Vue.js template
+```
+<template>
+    <img :src="require('@image/medbear.png').default" alt="Hello Medbear" />
+  </div>
+</template>
+```
+
 #### image_bundle_tagを使って、erbファイルに画像を埋め込む
 [こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
 
