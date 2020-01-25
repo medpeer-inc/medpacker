@@ -26,6 +26,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@js/*": ["app/bundles/javascripts/*"],
+      "@image/*": ["app/bundles/images/*"],
       "@spec/*": ["spec/javascripts/*"]
     },
     "typeRoots": ["node_modules/@types"]
