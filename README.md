@@ -188,8 +188,24 @@ Otherwise, webpack doesn't build SCSS file and occur the error when `stylesheet_
 ### Image
 Follow the below instruction when you import images to your application(you don't need them when you use images for css background-image).
 
-#### Use image_bundle_tag
+#### Use image_bundle_tag inside erb file
 You can render image tag [like this](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19) using `image_bundle_tag`.
+
+#### resolve image path
+##### css
+`url('~@image/medbear.png')`
+
+##### ts
+`import img from '@image/medbear.png';`
+The img variable is string literal of image path.
+
+##### Vue.js template
+```
+<template>
+    <img :src="require('@image/medbear.png').default" alt="Hello Medbear" />
+  </div>
+</template>
+```
 
 ### E2E test (feature spec & system spec)
 Medpacker executes webpack build as default when it inspects `js: true` before driving e2e specs.

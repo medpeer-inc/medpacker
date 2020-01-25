@@ -184,6 +184,9 @@ tsと同様に、必ず`content_for :bundel_css`を使用してください。
 ### 画像の読み込み
 もしimageタグで画像を読み込みたい場合は、以下のようにする必要があります(cssのbackground-imageで読み込む場合は以下を実施する必要はありません)。
 
+#### image_bundle_tagを使って、erbファイルに画像を埋め込む
+[こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
+
 #### tsファイルに画像ファイルをimport
 `app/bundles/javascripts/entries/image.ts`に読み込みたい画像をimportしてください。
 例えば以下のように
@@ -192,8 +195,21 @@ tsと同様に、必ず`content_for :bundel_css`を使用してください。
 import './webpack-logo.svg';
 ```
 
-#### image_bundle_tagを使って、erbファイルに画像を埋め込む
-[こんな感じで](https://github.com/medpeer-inc/medpacker/blob/master/app/views/home/index.html.erb#L19)、image_bundle_tagを使うことで指定した画像ファイルのimgタグを出力することができます。
+#### 画像ファイルのパス解決
+##### css
+`url('~@image/medbear.png')`
+
+##### ts
+`import img from '@image/medbear.png';`
+imgは指定された画像のパスがstringで格納されてます。
+
+##### Vue.js template
+```
+<template>
+    <img :src="require('@image/medbear.png').default" alt="Hello Medbear" />
+  </div>
+</template>
+```
 
 ### E2Eテスト(というかfeature spec & system spec)
 デフォルトでは、実行対象のrspec内に`js: true`があれば一度だけwebpackのビルドが走り、それでビルドされたアセットを使用してtsを使用したfeature spec/system specが実行されるようになっています。
