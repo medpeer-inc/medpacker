@@ -13,7 +13,7 @@ import img from '@image/medbear.png';
 
 export default Vue.extend({
   computed: {
-    src () {
+    src(): string {
       return img;
     }
   }
