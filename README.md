@@ -1,4 +1,4 @@
-Japanese [README.md](https://github.com/medpeer-inc/README.ja.md)
+Japanese [README.md](https://github.com/medpeer-inc/medpacker/README.ja.md)
 
 # Index
 - [About](https://github.com/medpeer-inc/medpacker#About)
