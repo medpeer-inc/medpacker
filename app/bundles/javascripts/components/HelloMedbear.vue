@@ -15,8 +15,8 @@ export default Vue.extend({
   computed: {
     src(): string {
       return img;
-    }
-  }
+    },
+  },
 });
 </script>
 

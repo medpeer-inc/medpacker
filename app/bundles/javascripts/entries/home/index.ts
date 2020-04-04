@@ -6,5 +6,5 @@ import '@js/modules/home/title_writer';
 Vue.component('hello-medbear', HelloMedbear);
 
 new Vue({
-  el: '#vue-app'
+  el: '#vue-app',
 });
