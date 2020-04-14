@@ -1,5 +1,10 @@
 /* globals module */
 module.exports = {
+  globals: {
+    'ts-jest': {
+      tsConfig: 'spec/javascripts/tsconfig.json'
+    }
+  },
   moduleFileExtensions: ['js', 'ts', 'json', 'vue'],
   testPathIgnorePatterns: ['/node_modules/', '/env/'],
   transform: {

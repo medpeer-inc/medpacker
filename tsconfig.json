@@ -34,10 +34,7 @@
   "include": [
     "app/bundles/javascripts/**/*.ts",
     "app/bundles/javascripts/**/*.js",
-    "app/bundles/javascripts/components/**/*.vue",
-    "spec/javascripts/**/*.js",
-    "spec/javascripts/**/*.ts"
+    "app/bundles/javascripts/components/**/*.vue"
   ],
-  "exclude": ["node_modules", "vendor", "public"],
   "compileOnSave": false
 }
