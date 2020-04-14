@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "../../app/bundles/javascripts/**/*.ts",
+    "../../app/bundles/javascripts/**/*.js",
+    "../../app/bundles/javascripts/components/**/*.vue",
+    "../../spec/javascripts/**/*.js",
+    "../../spec/javascripts/**/*.ts"
+  ]
+}
