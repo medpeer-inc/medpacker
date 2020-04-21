@@ -213,7 +213,6 @@ DEPENDENCIES
   rack-proxy
   rails (~> 6.0.0)
   rspec-rails
-  selenium-webdriver
   spring
   spring-watcher-listen
   sqlite3
