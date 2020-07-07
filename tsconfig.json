@@ -20,7 +20,7 @@
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "noUnusedParameters": true,
     "downlevelIteration": true,
     "resolveJsonModule": true,
