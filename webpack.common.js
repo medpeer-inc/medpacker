@@ -1,7 +1,7 @@
 /* globals __dirname module */
 const glob = require('glob');
 const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const ManifestPlugin = require('webpack-assets-manifest');
 // extract css from bundled javascript
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -38,9 +38,8 @@ module.exports = {
   },
   plugins: [
     new ManifestPlugin({
-      fileName: 'manifest.json',
       publicPath: '/bundles/',
-      writeToFileEmit: true
+      writeToDisk: true
     }),
     new MiniCssExtractPlugin({
       filename: 'style/[name]-[hash].css',
