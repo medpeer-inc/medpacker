@@ -17,7 +17,7 @@
     "test:watch": "NODE_ENV=test jest --runInBand --watch"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "normalize.css": "^8.0.1",
     "rails-ujs": "^5.2.4",
     "vue": "^2.6.11"
